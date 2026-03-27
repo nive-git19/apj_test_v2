@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APJ Cabs — Premium Chauffeur Service</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #E8A020;
+  --gold-light: #F5C85C;
+  --dark: #0A0C14;
+  --dark2: #12141F;
+  --dark3: #1A1D2A;
+  --ink: #C8CAD4;
+  --ink-light: #6E7186;
+  --white: #F2F3F7;
+  --sans: 'DM Sans', sans-serif;
+  --mono: 'DM Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--sans);
+  background: var(--dark);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(10, 12, 20, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(232, 160, 32, 0.1);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-logo {
+  width: 38px;
+  height: 38px;
+  background: var(--gold);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.nav-title {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 2px;
+}
+
+.nav-tag {
+  font-size: 9px;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  color: var(--ink-light);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse 60% 50% at 50% 40%, rgba(232, 160, 32, 0.06) 0%, transparent 70%),
+    radial-gradient(circle at 20% 80%, rgba(232, 160, 32, 0.03) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 700px;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(232, 160, 32, 0.3);
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 32px;
+}
+
+.hero-title {
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+}
+
+.hero-title span {
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-size: 17px;
+  color: var(--ink-light);
+  line-height: 1.7;
+  margin-bottom: 40px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold);
+  color: var(--dark);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+}
+
+.hero-cta:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(232, 160, 32, 0.25);
+}
+
+/* ── FEATURES ── */
+.features {
+  padding: 80px 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.features-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  background: var(--dark2);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 28px 24px;
+  transition: border-color 0.2s;
+}
+
+.feature-card:hover {
+  border-color: rgba(232, 160, 32, 0.2);
+}
+
+.feature-icon {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.feature-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.feature-desc {
+  font-size: 13px;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+
+/* ── FLEET ── */
+.fleet {
+  padding: 60px 40px 80px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.fleet-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.fleet-card {
+  background: var(--dark2);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 24px 20px;
+  text-align: center;
+}
+
+.fleet-emoji {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.fleet-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.fleet-config {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-light);
+}
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 32px 40px;
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 12px;
+  color: var(--ink-light);
+}
+
+.footer-text span {
+  color: var(--gold);
+}
+
+/* ── CTA BAR ── */
+.cta-bar {
+  background: var(--dark3);
+  border: 1px solid rgba(232, 160, 32, 0.15);
+  border-radius: 14px;
+  padding: 40px;
+  margin: 0 auto 60px;
+  max-width: 700px;
+  text-align: center;
+}
+
+.cta-bar-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.cta-bar-sub {
+  font-size: 14px;
+  color: var(--ink-light);
+  margin-bottom: 24px;
+}
+
+.cta-bar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold);
+  color: var(--dark);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cta-bar-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 640px) {
+  nav { padding: 12px 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 100px 20px 60px; }
+  .features, .fleet { padding: 40px 20px; }
+  .cta-bar { margin: 0 20px 40px; padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">🚖</div>
+    <div>
+      <div class="nav-title">APJ CABS</div>
+      <div class="nav-tag">Premium Chauffeur Service</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <a href="#fleet">Fleet</a>
+    <a href="#features">Services</a>
+    <a href="#book">Book Now</a>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✦ Trusted Since 2010 · Chennai</div>
+    <h1 class="hero-title">Premium rides,<br><span>on your terms.</span></h1>
+    <p class="hero-sub">
+      Chauffeur-driven Innovas, Fortuners & Urbanias for local trips, 
+      outstation journeys, and airport transfers across India.
+    </p>
+    <button class="hero-cta" onclick="if(window.fcWidget)fcWidget.open();">
+      💬 Get an Instant Quote
+    </button>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="features-label">Why APJ Cabs</div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🛬</div>
+      <div class="feature-title">Airport Gate Pickup</div>
+      <div class="feature-desc">We pick you up directly at the arrival gate — no MLCP parking walk.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <div class="feature-title">Transparent Pricing</div>
+      <div class="feature-desc">GST-inclusive fare estimates upfront. No hidden charges, no surge pricing.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🚗</div>
+      <div class="feature-title">Smart Vehicle Match</div>
+      <div class="feature-desc">Tell us your group size and luggage — we recommend the perfect vehicle.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏔️</div>
+      <div class="feature-title">Pan-India Coverage</div>
+      <div class="feature-desc">Chennai local, outstation to any city, hill stations with route advisories.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💬</div>
+      <div class="feature-title">AI-Powered Booking</div>
+      <div class="feature-desc">Chat with our bot, get your quote instantly, and confirm with a human agent.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-title">Verified Chauffeurs</div>
+      <div class="feature-desc">Background-verified, uniformed drivers with 5+ years of experience.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FLEET -->
+<section class="fleet" id="fleet">
+  <div class="fleet-label">Our Fleet</div>
+  <div class="fleet-grid">
+    <div class="fleet-card">
+      <div class="fleet-emoji">🚙</div>
+      <div class="fleet-name">Innova Crysta G</div>
+      <div class="fleet-config">6+1 / 7+1 Seater</div>
+    </div>
+    <div class="fleet-card">
+      <div class="fleet-emoji">✨</div>
+      <div class="fleet-name">Innova Crysta V</div>
+      <div class="fleet-config">7+1 Premium</div>
+    </div>
+    <div class="fleet-card">
+      <div class="fleet-emoji">🏎️</div>
+      <div class="fleet-name">Toyota Fortuner</div>
+      <div class="fleet-config">7+1 SUV</div>
+    </div>
+    <div class="fleet-card">
+      <div class="fleet-emoji">🚐</div>
+      <div class="fleet-name">Force Urbania</div>
+      <div class="fleet-config">12+1 / 16+1 MPV</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="book">
+  <div class="cta-bar">
+    <div class="cta-bar-title">Ready to book?</div>
+    <div class="cta-bar-sub">Chat with our assistant for an instant fare estimate.</div>
+    <button class="cta-bar-btn" onclick="if(window.fcWidget)fcWidget.open();">
+      💬 Start Chat
+    </button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-text">
+    © 2026 <span>APJ Cabs</span> · Built by SDK Infinity Technologies
+  </div>
+</footer>
+
+<!-- FRESHCHAT WIDGET -->
+<script
+  src='//in.fw-cdn.com/32714694/1530680.js'
+  chat='true' widgetId='8fb1a244-1cb8-42d0-ad3b-df300aa2c682'>
+</script>
+
+</body>
+</html>
