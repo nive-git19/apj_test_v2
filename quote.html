@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>APJ Cabs — Get Your Quote</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --gold: #E8A020;
+  --gold-light: #FDF3E0;
+  --gold-border: #F0C060;
+  --dark: #0D0F1A;
+  --dark2: #161828;
+  --ink: #1C1E2E;
+  --ink-mid: #4A4D6A;
+  --ink-light: #8A8DAA;
+  --surface: #F7F8FC;
+  --white: #FFFFFF;
+  --border: #E4E6F0;
+  --green: #1A9E5C;
+  --green-bg: #E8F7EF;
+  --red: #D03030;
+  --red-bg: #FDEBEB;
+  --mono: 'DM Mono', monospace;
+  --sans: 'DM Sans', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  background: var(--surface);
+  color: var(--ink);
+  min-height: 100vh;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--dark);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.header-logo {
+  width: 32px; height: 32px;
+  background: var(--gold);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.header-name {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.header-tag {
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ── STEP BAR ── */
+.stepbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+}
+.stepbar::-webkit-scrollbar { display: none; }
+.step-item { display: flex; align-items: center; gap: 0; flex-shrink: 0; }
+.step-dot {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--border);
+  color: var(--ink-light);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+.step-dot.active { background: var(--gold); color: #fff; }
+.step-dot.done { background: var(--green); color: #fff; font-size: 13px; }
+.step-name {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--ink-light);
+  margin-left: 6px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+.step-name.active { color: var(--gold); }
+.step-name.done { color: var(--green); }
+.step-connector {
+  width: 20px; height: 1px;
+  background: var(--border);
+  margin: 0 6px;
+  transition: background 0.3s;
+  flex-shrink: 0;
+}
+.step-connector.done { background: var(--green); }
+
+/* ── SCREEN ── */
+.screen { display: none; animation: slideUp 0.22s ease; }
+.screen.active { display: block; }
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION TITLE ── */
+.section-head {
+  padding: 20px 20px 0;
+}
+.section-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 4px;
+}
+.section-sub {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ── CUSTOMER STRIP ── */
+.cust-strip {
+  margin: 16px 20px 0;
+  background: var(--gold-light);
+  border: 1px solid var(--gold-border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #7a4a00;
+}
+.cust-avatar {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin: 14px 20px 0;
+  overflow: hidden;
+}
+.card-head {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-head-icon {
+  width: 28px; height: 28px;
+  background: var(--gold-light);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+}
+.card-head-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.card-body { padding: 16px; }
+
+/* ── FORM ── */
+.field { margin-bottom: 14px; }
+.field:last-child { margin-bottom: 0; }
+.field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-mid);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.field input, .field select {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1.5px solid var(--border);
+  border-radius: 9px;
+  font-size: 13px;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--surface);
+  outline: none;
+  transition: border 0.2s, background 0.2s;
+  appearance: none;
+}
+.field input:focus, .field select:focus {
+  border-color: var(--gold);
+  background: var(--white);
+}
+.field input::placeholder { color: var(--ink-light); }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* ── TRIP TYPE BUTTONS ── */
+.triptype-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.triptype-btn {
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.18s;
+  background: var(--surface);
+  user-select: none;
+}
+.triptype-btn:hover { border-color: var(--gold-border); background: var(--gold-light); }
+.triptype-btn.selected { border-color: var(--gold); background: var(--gold-light); }
+.triptype-btn.selected .tt-label { color: var(--gold); }
+.tt-icon { font-size: 22px; display: block; margin-bottom: 6px; }
+.tt-label { font-size: 12px; font-weight: 600; color: var(--ink); transition: color 0.18s; }
+.tt-sub { font-size: 10px; color: var(--ink-light); margin-top: 2px; }
+
+/* ── DROP TYPE BUTTONS ── */
+.droptype-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.droptype-btn {
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.18s;
+  background: var(--surface);
+}
+.droptype-btn:hover { border-color: var(--gold-border); background: var(--gold-light); }
+.droptype-btn.selected { border-color: var(--gold); background: var(--gold-light); }
+.dt-icon { font-size: 18px; display: block; margin-bottom: 4px; }
+.dt-label { font-size: 11px; font-weight: 600; color: var(--ink); }
+
+/* ── BUTTONS ── */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--sans);
+  cursor: pointer;
+  transition: all 0.18s;
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+.btn + .btn { margin-top: 8px; }
+.btn-gold { background: var(--gold); color: #fff; }
+.btn-gold:hover { background: #D09018; }
+.btn-dark { background: var(--dark); color: #fff; }
+.btn-dark:hover { background: var(--dark2); }
+.btn-outline { background: transparent; color: var(--ink); border: 2px solid var(--border); }
+.btn-outline:hover { background: var(--surface); border-color: var(--ink-light); }
+.btn-green { background: var(--green); color: #fff; }
+.btn-green:hover { background: #158A4E; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-actions { padding: 16px 20px 20px; }
+
+/* ── VEHICLE CARDS ── */
+.vehicle-grid { display: flex; flex-direction: column; gap: 10px; }
+.vc {
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--white);
+}
+.vc:hover { border-color: var(--gold-border); }
+.vc.selected { border-color: var(--gold); }
+.vc.best { border-color: var(--green); }
+.vc-badge {
+  background: var(--green);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  text-align: center;
+}
+.vc-img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  display: block;
+  background: var(--surface);
+}
+.vc-img-placeholder {
+  width: 100%;
+  height: 130px;
+  background: linear-gradient(135deg, #f0f2f8, #e4e6f0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+}
+.vc-body { padding: 12px 14px; }
+.vc-name { font-size: 14px; font-weight: 700; color: var(--ink); }
+.vc-config { font-size: 11px; color: var(--ink-light); margin-top: 2px; }
+.vc-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+.vc-tag {
+  font-size: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 2px 8px;
+  color: var(--ink-mid);
+}
+
+/* ── PACKAGE TILES ── */
+.pkg-list { display: flex; flex-direction: column; gap: 8px; }
+.pkg-tile {
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 13px 14px;
+  cursor: pointer;
+  transition: all 0.18s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--white);
+}
+.pkg-tile:hover { border-color: var(--gold-border); background: var(--gold-light); }
+.pkg-tile.selected { border-color: var(--gold); background: var(--gold-light); }
+.pkg-name { font-size: 13px; font-weight: 700; color: var(--ink); }
+.pkg-detail { font-size: 11px; color: var(--ink-light); margin-top: 3px; }
+.pkg-price { font-family: var(--mono); font-size: 16px; font-weight: 500; color: var(--gold); }
+
+/* ── QUOTE ── */
+.quote-box {
+  background: var(--white);
+  border: 2px solid var(--gold-border);
+  border-radius: 12px;
+  margin: 14px 20px 0;
+  overflow: hidden;
+}
+.quote-header {
+  background: var(--dark);
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.quote-header-label { font-size: 10px; letter-spacing: 2px; color: #888; text-transform: uppercase; font-family: var(--mono); }
+.quote-header-vehicle { font-size: 13px; font-weight: 600; color: var(--gold); }
+.quote-rows { padding: 14px 16px; }
+.quote-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.quote-row:last-of-type { border-bottom: none; }
+.qr-label { color: var(--ink-mid); }
+.qr-value { font-family: var(--mono); font-weight: 500; color: var(--ink); }
+.qr-value.zero { color: var(--ink-light); }
+.quote-total {
+  background: var(--gold-light);
+  border-top: 2px solid var(--gold-border);
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.qt-label { font-size: 13px; font-weight: 700; color: var(--ink); }
+.qt-value { font-family: var(--mono); font-size: 22px; font-weight: 500; color: var(--gold); }
+
+/* ── TERMS ── */
+.terms {
+  margin: 12px 20px 0;
+  background: #F0F4FF;
+  border: 1px solid #C8D4F8;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 11px;
+  color: var(--ink-mid);
+  line-height: 1.7;
+}
+
+/* ── ONE WAY NOTICE ── */
+.oneway-notice {
+  margin: 12px 20px 0;
+  background: #FFF8E0;
+  border: 1px solid #F0D060;
+  border-radius: 10px;
+  padding: 13px 14px;
+  font-size: 12px;
+  color: #7a5500;
+  line-height: 1.6;
+  display: none;
+}
+
+/* ── STATUS ── */
+.status-ok {
+  margin: 12px 20px 0;
+  background: var(--green-bg);
+  border: 1px solid #A0DDB8;
+  border-radius: 10px;
+  padding: 13px 14px;
+  text-align: center;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 600;
+  display: none;
+}
+.status-err {
+  margin: 10px 20px 0;
+  background: var(--red-bg);
+  border: 1px solid #EAA0A0;
+  border-radius: 10px;
+  padding: 11px 14px;
+  text-align: center;
+  color: var(--red);
+  font-size: 12px;
+  display: none;
+}
+
+/* ── RETURN CARD ── */
+.return-card {
+  margin: 14px 20px 0;
+  background: var(--dark);
+  border-radius: 12px;
+  padding: 24px 20px;
+  text-align: center;
+  display: none;
+}
+.return-icon { font-size: 40px; display: block; margin-bottom: 12px; }
+.return-title { font-size: 16px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+.return-sub { font-size: 12px; color: #aaa; line-height: 1.7; }
+
+/* ── SPACER ── */
+.spacer { height: 24px; }
+
+/* ── HILL WARNING ── */
+.hill-warning {
+  margin: 12px 20px 0;
+  background: #FFF3E0;
+  border: 1px solid #FFB74D;
+  border-radius: 10px;
+  padding: 13px 14px;
+  font-size: 12px;
+  color: #7a4000;
+  line-height: 1.6;
+  display: none;
+}
+
+/* ── OUTSTATION DAYS ── */
+.days-selector {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.day-btn {
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-mid);
+  background: var(--surface);
+  transition: all 0.18s;
+}
+.day-btn.selected { border-color: var(--gold); background: var(--gold-light); color: var(--ink); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-brand">
+    <div class="header-logo">🚖</div>
+    <div>
+      <div class="header-name">APJ CABS</div>
+      <div class="header-tag">Quote Calculator</div>
+    </div>
+  </div>
+  <div style="font-family:var(--mono);font-size:10px;color:#555;letter-spacing:1px;" id="headerConvStatus">CONNECTING...</div>
+</div>
+
+<!-- STEP BAR -->
+<div class="stepbar">
+  <div class="step-item">
+    <div class="step-dot active" id="sd1">1</div>
+    <div class="step-name active" id="sn1">Trip</div>
+  </div>
+  <div class="step-connector" id="sc1-2"></div>
+  <div class="step-item">
+    <div class="step-dot" id="sd2">2</div>
+    <div class="step-name" id="sn2">Vehicle</div>
+  </div>
+  <div class="step-connector" id="sc2-3"></div>
+  <div class="step-item">
+    <div class="step-dot" id="sd3">3</div>
+    <div class="step-name" id="sn3">Package</div>
+  </div>
+  <div class="step-connector" id="sc3-4"></div>
+  <div class="step-item">
+    <div class="step-dot" id="sd4">4</div>
+    <div class="step-name" id="sn4">Quote</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SCREEN 1 — TRIP DETAILS              -->
+<!-- ══════════════════════════════════════ -->
+<div class="screen active" id="s1">
+  <div id="custStripWrap" style="display:none">
+    <div class="cust-strip">
+      <div class="cust-avatar" id="custInitial">?</div>
+      <div>
+        <div style="font-weight:700;font-size:13px;" id="custGreet">Welcome!</div>
+        <div style="font-size:11px;color:#a07020;">Let's build your personalised quote 🚖</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head" style="margin-top:14px;">
+    <div class="section-title">Step 1</div>
+    <div class="section-sub">Journey Details</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-head-icon">📍</div>
+      <div class="card-head-title">Locations</div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <label>Pickup Location</label>
+        <input type="text" id="pickup" placeholder="e.g. Anna Nagar, Chennai"/>
+      </div>
+      <div class="field">
+        <label>Drop Location</label>
+        <input type="text" id="drop" placeholder="e.g. Chennai Airport"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-head-icon">🗓️</div>
+      <div class="card-head-title">Trip Info</div>
+    </div>
+    <div class="card-body">
+      <div class="field-row">
+        <div class="field">
+          <label>Journey Date</label>
+          <input type="date" id="journeyDate"/>
+        </div>
+        <div class="field">
+          <label>Journey Time</label>
+          <input type="time" id="journeyTime"/>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Passengers</label>
+          <input type="number" id="pax" placeholder="e.g. 4" min="1" max="42"/>
+        </div>
+        <div class="field">
+          <label>Large Bags</label>
+          <input type="number" id="bags" placeholder="e.g. 2" min="0" max="20"/>
+        </div>
+      </div>
+      <div class="field">
+        <label>Approx Distance KM <span style="font-weight:400;text-transform:none;color:var(--ink-light)">(Garage to Garage)</span></label>
+        <input type="number" id="dist" placeholder="e.g. 21" min="1"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-head-icon">🧭</div>
+      <div class="card-head-title">Trip Type</div>
+    </div>
+    <div class="card-body">
+      <div class="triptype-grid">
+        <div class="triptype-btn" id="tt-LOCAL" onclick="selTripType('LOCAL')">
+          <span class="tt-icon">🏙️</span>
+          <div class="tt-label">Local</div>
+          <div class="tt-sub">Within city</div>
+        </div>
+        <div class="triptype-btn" id="tt-AIRPORT" onclick="selTripType('AIRPORT')">
+          <span class="tt-icon">✈️</span>
+          <div class="tt-label">Airport</div>
+          <div class="tt-sub">Transfer</div>
+        </div>
+        <div class="triptype-btn" id="tt-OUTSTATION" onclick="selTripType('OUTSTATION')">
+          <span class="tt-icon">🛣️</span>
+          <div class="tt-label">Outstation</div>
+          <div class="tt-sub">City to city</div>
+        </div>
+        <div class="triptype-btn" id="tt-BRIDAL" onclick="selTripType('BRIDAL')">
+          <span class="tt-icon">💍</span>
+          <div class="tt-label">Bridal</div>
+          <div class="tt-sub">Wedding event</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Outstation — Number of Days -->
+  <div class="card" id="outstationDaysCard" style="display:none">
+    <div class="card-head">
+      <div class="card-head-icon">📅</div>
+      <div class="card-head-title">Number of Days</div>
+    </div>
+    <div class="card-body">
+      <div class="days-selector" id="daysSelector">
+        <div class="day-btn" onclick="selDays(1)">1 Day</div>
+        <div class="day-btn" onclick="selDays(2)">2 Days</div>
+        <div class="day-btn" onclick="selDays(3)">3 Days</div>
+        <div class="day-btn" onclick="selDays(4)">4 Days</div>
+        <div class="day-btn" onclick="selDays(5)">5 Days</div>
+        <div class="day-btn" onclick="selDays(6)">6 Days</div>
+        <div class="day-btn" onclick="selDays(7)">7 Days</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Drop Type -->
+  <div class="card" id="dropTypeCard" style="display:none">
+    <div class="card-head">
+      <div class="card-head-icon">🚦</div>
+      <div class="card-head-title">Drop Type</div>
+    </div>
+    <div class="card-body">
+      <div class="droptype-grid">
+        <div class="droptype-btn" id="dt-DROP_ONLY" onclick="selDropType('DROP_ONLY')">
+          <span class="dt-icon">📍</span>
+          <div class="dt-label">Drop Only</div>
+        </div>
+        <div class="droptype-btn" id="dt-RETURN" onclick="selDropType('RETURN')">
+          <span class="dt-icon">🔄</span>
+          <div class="dt-label">Drop + Return</div>
+        </div>
+        <div class="droptype-btn" id="dt-MULTI_STOP" onclick="selDropType('MULTI_STOP')">
+          <span class="dt-icon">📌</span>
+          <div class="dt-label">Multi Stop</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-actions">
+    <button class="btn btn-gold" onclick="step1Next()">Find Best Vehicles →</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SCREEN 2 — VEHICLE SELECTION         -->
+<!-- ══════════════════════════════════════ -->
+<div class="screen" id="s2">
+  <div class="section-head" style="margin-top:14px;">
+    <div class="section-title">Step 2</div>
+    <div class="section-sub">Vehicle Recommendation</div>
+  </div>
+  <div style="padding:4px 20px 0;font-size:12px;color:var(--ink-light);" id="vehicleSubtext"></div>
+
+  <div class="card">
+    <div class="card-body" style="padding:12px;">
+      <div class="vehicle-grid" id="vehicleGrid"></div>
+    </div>
+  </div>
+
+  <div class="btn-actions">
+    <button class="btn btn-outline" onclick="goTo(1)">← Back</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SCREEN 3 — PACKAGE SELECTION         -->
+<!-- ══════════════════════════════════════ -->
+<div class="screen" id="s3">
+  <div class="section-head" style="margin-top:14px;">
+    <div class="section-title">Step 3</div>
+    <div class="section-sub">Select a Package</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-head-icon">🚗</div>
+      <div class="card-head-title" id="pkgVehicleTitle">Packages</div>
+    </div>
+    <div class="card-body">
+      <div class="pkg-list" id="pkgList"></div>
+    </div>
+  </div>
+
+  <div class="btn-actions">
+    <button class="btn btn-outline" onclick="goTo(2)">← Back</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SCREEN 4 — QUOTE + CONFIRM           -->
+<!-- ══════════════════════════════════════ -->
+<div class="screen" id="s4">
+  <div class="section-head" style="margin-top:14px;">
+    <div class="section-title">Step 4</div>
+    <div class="section-sub">Your Fare Estimate</div>
+  </div>
+
+  <div class="oneway-notice" id="onewayNotice">
+    ⚠️ <strong>One Way Trip:</strong> Return journey distance from drop location back to our garage is included in the fare estimate. This is standard practice for all one-way outstation trips.
+    <div style="margin-top:10px;display:flex;gap:8px;">
+      <button class="btn btn-gold btn-sm" onclick="document.getElementById('onewayNotice').style.display='none'">Understood, Proceed</button>
+      <button class="btn btn-outline btn-sm" onclick="goTo(1)">Modify</button>
+    </div>
+  </div>
+
+  <div class="hill-warning" id="hillWarning">
+    🏔️ <strong>Hill Station Notice:</strong> Your destination is in a hill station area. Large vehicles and buses may have route or access restrictions. Our team will confirm vehicle suitability before finalising your booking.
+  </div>
+
+  <div class="quote-box" id="quoteBox">
+    <div class="quote-header">
+      <div>
+        <div class="quote-header-label">Booking Estimate</div>
+        <div class="quote-header-vehicle" id="qVehicle">—</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="quote-header-label">Trip Type</div>
+        <div style="font-size:12px;color:#aaa;font-family:var(--mono);" id="qTripType">—</div>
+      </div>
+    </div>
+    <div class="quote-rows" id="quoteRows"></div>
+    <div class="quote-total">
+      <div class="qt-label">Total Payable</div>
+      <div class="qt-value" id="qTotal">₹0</div>
+    </div>
+  </div>
+
+  <div class="terms">
+    🔹 Rental includes vehicle hire with fuel and driver.<br>
+    🔹 Toll charges, parking and GST are additional and will be charged as applicable.<br>
+    🔹 Vehicle availability is subject to confirmation at time of booking.
+  </div>
+
+  <div class="status-ok" id="statusOk">✅ Your booking summary has been sent to our team!</div>
+  <div class="status-err" id="statusErr"></div>
+
+  <div class="return-card" id="returnCard">
+    <span class="return-icon">✅</span>
+    <div class="return-title">Summary Sent Successfully!</div>
+    <div class="return-sub">
+      Your booking details have been shared with an APJ Cabs travel advisor.<br><br>
+      Close this window and tap the <strong>chat icon</strong> 💬 to speak with our agent.
+    </div>
+    <br>
+    <button class="btn btn-gold" id="closeBtn" onclick="returnToChat()"
+      style="max-width:220px;margin:0 auto;font-size:13px;">
+      ✕ Close & Return to Chat
+    </button>
+  </div>
+
+  <div id="quoteActions" class="btn-actions">
+    <button class="btn btn-dark" id="agentBtn" onclick="talkToAgent()">
+      🧑‍💼 Talk to Agent & Confirm Booking
+    </button>
+    <button class="btn btn-outline" onclick="goTo(3)">← Modify Package</button>
+  </div>
+
+  <div class="spacer"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<script>
+// ─── CONFIG ──────────────────────────────────────────────
+const BACKEND = 'https://apjcabs-bridge.onrender.com';
+
+// ─── VEHICLE MASTER ──────────────────────────────────────
+// (placeholder images — replace with real APJ fleet photos)
+const VEHICLES = [
+  {
+    id:'innova_g_6', name:'Innova Crysta G', config:'6+1 Seater',
+    category:'SUV', maxPax:3, maxBags:2,
+    img:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Toyota_Innova_Crysta_2.4_GX_MT_Silver_Metallic_front.jpg/320px-Toyota_Innova_Crysta_2.4_GX_MT_Silver_Metallic_front.jpg',
+    local:[
+      {id:'4hr',label:'4 Hours / 40 KM',km:40,fare:2200,extrakm:25,extrahr:350},
+      {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:4250,extrakm:25,extrahr:350}
+    ],
+    out:{perKm:25,minKm:250,bata:750,nightHalt:500}
+  },
+  {
+    id:'innova_g_7', name:'Innova Crysta G', config:'7+1 Seater',
+    category:'SUV', maxPax:5, maxBags:3,
+    img:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Toyota_Innova_Crysta_2.4_GX_MT_Silver_Metallic_front.jpg/320px-Toyota_Innova_Crysta_2.4_GX_MT_Silver_Metallic_front.jpg',
+    local:[
+      {id:'4hr',label:'4 Hours / 40 KM',km:40,fare:2200,extrakm:25,extrahr:350},
+      {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:4250,extrakm:25,extrahr:350}
+    ],
+    out:{perKm:25,minKm:250,bata:750,nightHalt:500}
+  },
+  {
+    id:'innova_v', name:'Innova Crysta V', config:'7+1 Seater',
+    category:'Premium SUV', maxPax:6, maxBags:4,
+    img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/2020_Toyota_Innova_Crysta_2.4_V_AT_%28facelift%2C_bronze%29%2C_front_8.21.18.jpg/320px-2020_Toyota_Innova_Crysta_2.4_V_AT_%28facelift%2C_bronze%29%2C_front_8.21.18.jpg',
+    local:[
+      {id:'4hr',label:'4 Hours / 40 KM',km:40,fare:2500,extrakm:30,extrahr:400},
+      {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:4750,extrakm:30,extrahr:400}
+    ],
+    out:{perKm:30,minKm:250,bata:750,nightHalt:500}
+  },
+  {
+    id:'fortuner', name:'Toyota Fortuner', config:'7+1 Seater',
+    category:'SUV', maxPax:7, maxBags:5,
+    img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Toyota_Fortuner_2016_white.jpg/320px-Toyota_Fortuner_2016_white.jpg',
+    local:[
+      {id:'4hr',label:'4 Hours / 40 KM',km:40,fare:3500,extrakm:70,extrahr:700},
+      {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:7000,extrakm:70,extrahr:700}
+    ],
+    out:{perKm:65,minKm:250,bata:750,nightHalt:500}
+  },
+  {
+    id:'urbania_12', name:'Force Urbania', config:'12+1 Seater',
+    category:'MPV', maxPax:12, maxBags:8,
+    img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Force_Urbania_at_Auto_Expo_2023.jpg/320px-Force_Urbania_at_Auto_Expo_2023.jpg',
+    local:[
+      {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:12000,extrakm:50,extrahr:1000}
+    ],
+    out:{perKm:55,minKm:300,bata:1000,nightHalt:500}
+  },
+  {
+    id:'urbania_16', name:'Force Urbania', config:'16+1 Seater',
+    category:'MPV', maxPax:16, maxBags:12,
+    img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Force_Urbania_at_Auto_Expo_2023.jpg/320px-Force_Urbania_at_Auto_Expo_2023.jpg',
+    local:[
+      {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:12500,extrakm:55,extrahr:1000}
+    ],
+    out:{perKm:55,minKm:300,bata:1000,nightHalt:500}
+  }
+];
+
+// Hill station list (from terms doc)
+const HILL_STATIONS = ['ooty','kodaikanal','yercaud','munnar','coonoor','valparai','yelagiri','coorg','wayanad','kodagu'];
+
+// ─── STATE ───────────────────────────────────────────────
+const S = {
+  name:'', phone:'', pickup:'', drop:'',
+  date:'', time:'', pax:1, bags:0, dist:0,
+  tripType:'', dropType:'DROP_ONLY', days:1,
+  vehicle:null, pkg:null, fare:0, convId:null
+};
+
+// ─── INIT ────────────────────────────────────────────────
+window.addEventListener('load', function() {
+  const p = new URLSearchParams(window.location.search);
+  S.name  = p.get('name')  || '';
+  S.phone = p.get('phone') || '';
+  S.convId = p.get('conversation_id') || null;
+
+  // Pre-fill from bot URL params
+  if (p.get('pickup'))  { document.getElementById('pickup').value  = p.get('pickup');  }
+  if (p.get('drop'))    { document.getElementById('drop').value    = p.get('drop');    }
+  if (p.get('pax'))     { document.getElementById('pax').value     = p.get('pax');     }
+  if (p.get('bags'))    { document.getElementById('bags').value    = p.get('bags');    }
+  if (p.get('trip'))    selTripType(p.get('trip').toUpperCase());
+
+  // Default date = today
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('journeyDate').value = today;
+
+  // Show customer strip
+  if (S.name) {
+    const initials = S.name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+    document.getElementById('custInitial').textContent = initials;
+    document.getElementById('custGreet').textContent   = 'Hi, ' + S.name + '!';
+    document.getElementById('custStripWrap').style.display = 'block';
+  }
+
+  // Fetch conv_id from backend
+  if (!S.convId) fetchConvId();
+  else document.getElementById('headerConvStatus').textContent = 'SESSION ●';
+});
+
+async function fetchConvId() {
+  try {
+    // Method 1 — from webhook store
+    const r1 = await fetch(BACKEND + '/get-conv-id');
+    const d1 = await r1.json();
+
+    if (d1.found && d1.conversation_id) {
+      S.convId = d1.conversation_id;
+      document.getElementById('headerConvStatus').textContent = 'SESSION ●';
+      document.getElementById('headerConvStatus').style.color = '#4caf7d';
+      console.log('Conv ID from store:', S.convId);
+      return;
+    }
+
+    // Method 2 — fetch latest from Freshchat API directly
+    const r2 = await fetch(BACKEND + '/get-latest-conv');
+    const d2 = await r2.json();
+
+    if (d2.found && d2.conversation_id) {
+      S.convId = d2.conversation_id;
+      document.getElementById('headerConvStatus').textContent = 'SESSION ●';
+      document.getElementById('headerConvStatus').style.color = '#4caf7d';
+      console.log('Conv ID from API:', S.convId);
+      return;
+    }
+
+    // Still nothing — retry in 3 seconds (Render may be waking up)
+    document.getElementById('headerConvStatus').textContent = 'CONNECTING...';
+    document.getElementById('headerConvStatus').style.color = '#f5a623';
+    setTimeout(fetchConvId, 3000);
+
+  } catch(e) {
+    console.log('Retrying conv_id fetch...', e.message);
+    setTimeout(fetchConvId, 3000);
+  }
+}
+
+// ─── STEP NAV ────────────────────────────────────────────
+function goTo(n) {
+  document.querySelectorAll('.screen').forEach((s,i) => s.classList.toggle('active', i+1===n));
+  // Update step bar
+  for (let i=1; i<=4; i++) {
+    const dot  = document.getElementById('sd'+i);
+    const name = document.getElementById('sn'+i);
+    dot.classList.remove('active','done');
+    name.classList.remove('active','done');
+    if (i < n)      { dot.classList.add('done'); dot.textContent='✓'; name.classList.add('done'); }
+    else if (i===n) { dot.classList.add('active'); dot.textContent=i; name.classList.add('active'); }
+    else            { dot.textContent=i; }
+    if (i<4) {
+      document.getElementById('sc'+i+'-'+(i+1))?.classList.toggle('done', i<n);
+    }
+  }
+  window.scrollTo(0,0);
+}
+
+// ─── TRIP TYPE ───────────────────────────────────────────
+function selTripType(type) {
+  S.tripType = type;
+  ['LOCAL','AIRPORT','OUTSTATION','BRIDAL'].forEach(t => {
+    document.getElementById('tt-'+t)?.classList.toggle('selected', t===type);
+  });
+  // Show outstation extras
+  document.getElementById('outstationDaysCard').style.display =
+    type==='OUTSTATION' ? 'block' : 'none';
+  document.getElementById('dropTypeCard').style.display =
+    (type==='LOCAL'||type==='OUTSTATION') ? 'block' : 'none';
+}
+
+function selDays(n) {
+  S.days = n;
+  document.querySelectorAll('.day-btn').forEach((b,i) => b.classList.toggle('selected', i+1===n));
+}
+
+function selDropType(type) {
+  S.dropType = type;
+  ['DROP_ONLY','RETURN','MULTI_STOP'].forEach(t => {
+    document.getElementById('dt-'+t)?.classList.toggle('selected', t===type);
+  });
+}
+
+// ─── STEP 1 → VEHICLES ───────────────────────────────────
+function step1Next() {
+  const pickup = document.getElementById('pickup').value.trim();
+  const drop   = document.getElementById('drop').value.trim();
+  const pax    = parseInt(document.getElementById('pax').value) || 0;
+  const bags   = parseInt(document.getElementById('bags').value) || 0;
+  const dist   = parseFloat(document.getElementById('dist').value) || 0;
+
+  if (!pickup)       { alert('Please enter pickup location.'); return; }
+  if (!drop)         { alert('Please enter drop location.'); return; }
+  if (!pax || pax<1) { alert('Please enter number of passengers.'); return; }
+  if (!S.tripType)   { alert('Please select a trip type.'); return; }
+  if (!dist || dist<1){ alert('Please enter approx distance.'); return; }
+
+  S.pickup   = pickup;
+  S.drop     = drop;
+  S.pax      = pax;
+  S.bags     = bags;
+  S.dist     = dist;
+  S.date     = document.getElementById('journeyDate').value;
+  S.time     = document.getElementById('journeyTime').value;
+
+  renderVehicles();
+  goTo(2);
+}
+
+// ─── VEHICLE RECOMMENDATION ──────────────────────────────
+function recommendVehicles(pax, bags) {
+  return VEHICLES.filter(v => pax <= v.maxPax && bags <= v.maxBags).slice(0,3);
+}
+
+function renderVehicles() {
+  const matches = recommendVehicles(S.pax, S.bags);
+  const grid    = document.getElementById('vehicleGrid');
+  const sub     = document.getElementById('vehicleSubtext');
+
+  sub.textContent = matches.length > 0
+    ? `Showing ${matches.length} match${matches.length>1?'es':''} for ${S.pax} passenger${S.pax>1?'s':''} + ${S.bags} bag${S.bags!==1?'s':''}`
+    : 'No standard vehicle matches your group size.';
+
+  if (matches.length === 0) {
+    grid.innerHTML = `
+      <div style="text-align:center;padding:24px;color:var(--ink-light);">
+        <div style="font-size:36px;margin-bottom:8px;">🚌</div>
+        <div style="font-size:13px;font-weight:600;">Group requires fleet arrangement</div>
+        <div style="font-size:12px;margin-top:4px;">Please talk to our travel advisor.</div>
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML = matches.map((v,i) => `
+    <div class="vc ${i===0?'best':''}" id="vc-${v.id}" onclick="selectVehicle('${v.id}')">
+      ${i===0 ? '<div class="vc-badge">⭐ Best Match for Your Trip</div>' : ''}
+      <img class="vc-img" src="${v.img}" alt="${v.name}"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="vc-img-placeholder" style="display:none">🚙</div>
+      <div class="vc-body">
+        <div class="vc-name">${v.name}</div>
+        <div class="vc-config">${v.config} · ${v.category}</div>
+        <div class="vc-tags">
+          <span class="vc-tag">👥 ${v.config}</span>
+          <span class="vc-tag">🧳 Max ${v.maxBags} bags</span>
+          <span class="vc-tag">⛽ Fuel incl.</span>
+          <span class="vc-tag">🙋 Chauffeur</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function selectVehicle(id) {
+  S.vehicle = VEHICLES.find(v => v.id === id);
+  document.querySelectorAll('.vc').forEach(c => c.classList.remove('selected'));
+  document.getElementById('vc-'+id)?.classList.add('selected');
+  setTimeout(() => renderPackages(), 220);
+}
+
+// ─── PACKAGES ────────────────────────────────────────────
+function renderPackages() {
+  const v      = S.vehicle;
+  const isOut  = S.tripType === 'OUTSTATION';
+  const title  = `${v.name} (${v.config}) — ${isOut?'Outstation':'Local'} Packages`;
+
+  document.getElementById('pkgVehicleTitle').textContent = title;
+
+  const list = document.getElementById('pkgList');
+  if (isOut) {
+    const o = v.out;
+    list.innerHTML = `
+      <div class="pkg-tile" id="pt-out" onclick="selectOutPkg()">
+        <div>
+          <div class="pkg-name">Outstation — Per KM Billing</div>
+          <div class="pkg-detail">₹${o.perKm}/km · Min ${o.minKm} KM/day · Driver Bata ₹${o.bata}/day</div>
+        </div>
+        <div class="pkg-price">₹${o.perKm}<span style="font-size:10px">/km</span></div>
+      </div>`;
+  } else {
+    list.innerHTML = v.local.map(pkg => `
+      <div class="pkg-tile" id="pt-${pkg.id}" onclick="selectLocalPkg('${v.id}','${pkg.id}')">
+        <div>
+          <div class="pkg-name">${pkg.label}</div>
+          <div class="pkg-detail">Extra: ₹${pkg.extrakm}/km · ₹${pkg.extrahr}/hr after limit</div>
+        </div>
+        <div class="pkg-price">₹${pkg.fare.toLocaleString('en-IN')}</div>
+      </div>`).join('');
+  }
+
+  goTo(3);
+}
+
+function selectLocalPkg(vid, pkgId) {
+  const v   = VEHICLES.find(x => x.id === vid);
+  S.pkg     = { ...v.local.find(p => p.id === pkgId), type:'local' };
+  document.querySelectorAll('.pkg-tile').forEach(t => t.classList.remove('selected'));
+  document.getElementById('pt-'+pkgId)?.classList.add('selected');
+  setTimeout(() => buildQuote(), 200);
+}
+
+function selectOutPkg() {
+  S.pkg = { ...S.vehicle.out, id:'out', label:'Outstation Per KM', type:'outstation' };
+  document.querySelectorAll('.pkg-tile').forEach(t => t.classList.add('selected'));
+  setTimeout(() => buildQuote(), 200);
+}
+
+// ─── FARE CALCULATION ────────────────────────────────────
+function buildQuote() {
+  const v    = S.vehicle;
+  const pkg  = S.pkg;
+  const dist = S.dist;
+  const isOut = S.tripType === 'OUTSTATION';
+
+  let rows = [];
+  let subtotal = 0;
+
+  if (isOut) {
+    const billable   = Math.max(dist, pkg.minKm * S.days);
+    const kmCost     = billable * pkg.perKm;
+    const bataCost   = (pkg.bata || 0) * S.days;
+    const nightHalts = Math.max(0, S.days - 1);
+    const nhCost     = nightHalts * (pkg.nightHalt || 0);
+    subtotal = kmCost + bataCost + nhCost;
+
+    rows = [
+      { label:`Distance (${billable} KM × ₹${pkg.perKm}/km)`, value:kmCost },
+      { label:`Driver Bata (${S.days} day${S.days>1?'s':''} × ₹${pkg.bata})`, value:bataCost }
+    ];
+    if (nightHalts > 0) {
+      rows.push({ label:`Night Halt (${nightHalts} night${nightHalts>1?'s':''} × ₹${pkg.nightHalt})`, value:nhCost });
+    }
+    if (billable > dist) {
+      rows.unshift({ label:`Min billing applied (${pkg.minKm*S.days} KM)`, value:'', note:true });
+    }
+    rows.push({ label:'Interstate Permit', value:'Actuals + additional' });
+
+  } else {
+    const extraKm   = Math.max(0, dist - pkg.km);
+    const extraCost = Math.round(extraKm * pkg.extrakm);
+    subtotal = pkg.fare + extraCost;
+
+    rows = [
+      { label:`${pkg.label}`, value:pkg.fare },
+      { label:`Extra KM (${extraKm} km × ₹${pkg.extrakm})`, value:extraCost },
+      { label:'Driver Bata (Local)', value:0 }
+    ];
+  }
+
+  const gst   = Math.round(subtotal * 0.18);
+  const total = subtotal + gst;
+  S.fare = total;
+
+  rows.push({ label:'GST 18%', value:gst });
+
+  // Hill station check
+  const dropLower = S.drop.toLowerCase();
+  const isHill    = HILL_STATIONS.some(h => dropLower.includes(h));
+  document.getElementById('hillWarning').style.display = isHill ? 'block' : 'none';
+
+  // One way notice for outstation
+  document.getElementById('onewayNotice').style.display =
+    (isOut && S.dropType === 'DROP_ONLY') ? 'block' : 'none';
+
+  // Render
+  document.getElementById('qVehicle').textContent  = `${v.name} (${v.config})`;
+  document.getElementById('qTripType').textContent = S.tripType + (S.days>1 ? ` · ${S.days} days` : '');
+
+  document.getElementById('quoteRows').innerHTML = rows.map(r => `
+    <div class="quote-row">
+      <span class="qr-label">${r.label}</span>
+      <span class="qr-value ${r.value===0?'zero':''}">
+        ${typeof r.value === 'number' ? '₹' + r.value.toLocaleString('en-IN') : r.value}
+      </span>
+    </div>`).join('');
+
+  document.getElementById('qTotal').textContent = '₹' + total.toLocaleString('en-IN');
+
+  goTo(4);
+}
+
+// ─── BUILD SUMMARY ───────────────────────────────────────
+function buildSummary() {
+  const v   = S.vehicle;
+  const pkg = S.pkg;
+  return `🚖 APJ CABS — BOOKING SUMMARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📅 Date       : ${S.date}${S.time ? ' @ ' + S.time : ''}
+🏙️ Trip Type  : ${S.tripType}${S.days > 1 ? ' (' + S.days + ' days)' : ''}
+🚦 Drop Type  : ${S.dropType.replace('_', ' ')}
+📍 Pickup     : ${S.pickup}
+📍 Drop       : ${S.drop}
+👥 Passengers : ${S.pax}
+🧳 Large Bags : ${S.bags}
+🚗 Vehicle    : ${v ? v.name + ' (' + v.config + ')' : '—'}
+📦 Package    : ${pkg ? (pkg.label || 'Outstation Per KM') : '—'}
+📏 Distance   : ${S.dist} KM (Garage to Garage)
+💰 Fare       : ₹${S.fare.toLocaleString('en-IN')} (incl. GST 18%)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Toll, parking & interstate permits additional.
+Customer requesting agent assistance.`;
+}
+
+// ─── RETURN TO CHAT ──────────────────────────────────────
+function returnToChat() {
+  // Experimental: plant a timer on the parent Wix page to reopen
+  // the Freshchat widget after history.back() collapses it.
+  try {
+    window.top.setTimeout(function() {
+      try { window.top.fcWidget.open(); } catch(e) {}
+    }, 600);
+  } catch(e) {
+    try {
+      window.parent.setTimeout(function() {
+        try { window.parent.fcWidget.open(); } catch(e) {}
+      }, 600);
+    } catch(e2) {}
+  }
+
+  // Exit the webview
+  window.history.back();
+}
+
+// ─── TALK TO AGENT ───────────────────────────────────────
+async function talkToAgent() {
+  const btn = document.getElementById('agentBtn');
+  btn.disabled    = true;
+  btn.textContent = 'Sending...';
+  document.getElementById('statusErr').style.display = 'none';
+
+  // Re-fetch conv_id right now in case it wasn't ready on page load
+  if (!S.convId) {
+    try {
+      const r = await fetch(BACKEND + '/get-conv-id');
+      const d = await r.json();
+      if (d.found && d.conversation_id) {
+        S.convId = d.conversation_id;
+        console.log('Conv ID fetched on agent click:', S.convId);
+      }
+    } catch(e) {
+      console.log('Could not fetch conv_id on click:', e.message);
+    }
+  }
+
+  const summary = buildSummary();
+  let sent = false;
+
+  // Method A — backend API with conv_id
+  if (S.convId) {
+    try {
+      const res = await fetch(BACKEND + '/send-summary', {
+        method : 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body   : JSON.stringify({ conversation_id: S.convId, summary })
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        sent = true;
+        console.log('✅ Summary sent via API');
+      } else {
+        console.error('API error:', data);
+      }
+    } catch(e) {
+      console.error('Backend fetch error:', e.message);
+    }
+  }
+
+  // Success — summary actually reached the agent
+  if (sent) {
+    document.getElementById('quoteActions').style.display = 'none';
+    document.getElementById('statusOk').textContent = '✅ Booking summary sent!';
+    document.getElementById('statusOk').style.display = 'block';
+    console.log('✅ Full flow complete — summary in agent inbox');
+
+    // Seamless auto-return after 1.5s — like a payment confirmation
+    setTimeout(() => returnToChat(), 1500);
+    return;
+  }
+
+  // If API send failed — show error, don't fake success
+  if (!sent) {
+    console.log('❌ Summary could not be sent via API');
+    document.getElementById('statusErr').textContent = 
+      '⚠️ Could not send summary automatically. Please share your quote details with the agent in chat.';
+    document.getElementById('statusErr').style.display = 'block';
+    // Still show return card so user can go back to chat
+    document.getElementById('returnCard').style.display   = 'block';
+    document.getElementById('quoteActions').style.display = 'none';
+    // Update return card messaging for manual flow
+    document.querySelector('.return-title').textContent = 'Return to Chat';
+    document.querySelector('.return-sub').innerHTML = 
+      'Please go back to the chat window and share your booking details with the agent.<br><br>' +
+      'Your fare estimate: <strong>₹' + S.fare.toLocaleString('en-IN') + '</strong>';
+  }
+}
+</script>
+</body>
+</html>
