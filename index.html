@@ -474,5 +474,25 @@ nav {
   chat='true' widgetId='8fb1a244-1cb8-42d0-ad3b-df300aa2c682'>
 </script>
 
+<script>
+// Auto-open widget when returning from quote page
+window.addEventListener('load', function() {
+  try {
+    if (localStorage.getItem('apj_return_to_chat') === 'true') {
+      localStorage.removeItem('apj_return_to_chat');
+      // Wait for Freshchat widget to initialize, then open it
+      var checkWidget = setInterval(function() {
+        if (window.fcWidget) {
+          clearInterval(checkWidget);
+          window.fcWidget.open();
+        }
+      }, 300);
+      // Stop checking after 5 seconds
+      setTimeout(function() { clearInterval(checkWidget); }, 5000);
+    }
+  } catch(e) {}
+});
+</script>
+
 </body>
 </html>
