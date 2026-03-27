@@ -1228,21 +1228,13 @@ Customer requesting agent assistance.`;
 
 // ─── RETURN TO CHAT ──────────────────────────────────────
 function returnToChat() {
-  // Experimental: plant a timer on the parent Wix page to reopen
-  // the Freshchat widget after history.back() collapses it.
+  // On standalone pages, the quote page takes over the full browser tab.
+  // history.back() returns to the demo landing page.
+  // We store a flag so the landing page knows to auto-open the widget.
   try {
-    window.top.setTimeout(function() {
-      try { window.top.fcWidget.open(); } catch(e) {}
-    }, 600);
-  } catch(e) {
-    try {
-      window.parent.setTimeout(function() {
-        try { window.parent.fcWidget.open(); } catch(e) {}
-      }, 600);
-    } catch(e2) {}
-  }
-
-  // Exit the webview
+    localStorage.setItem('apj_return_to_chat', 'true');
+  } catch(e) {}
+  
   window.history.back();
 }
 
