@@ -325,6 +325,7 @@ body { font-family: var(--sans); background: var(--surface); color: var(--ink); 
     <div class="card-head"><div class="card-head-icon">🚗</div><div class="card-head-title" id="pkgVehicleTitle">Packages</div></div>
     <div class="card-body"><div class="pkg-list" id="pkgList"></div></div>
   </div>
+  <div id="pkgLimitMsg" style="display:none; margin:10px 20px; padding:12px 16px; border-radius:10px; font-size:13px; line-height:1.6;"></div>
   <div class="btn-actions">
     <button class="btn btn-outline" onclick="goTo(2)">← Back</button>
   </div>
@@ -406,8 +407,8 @@ const VEHICLES = [
       5: { large:0, medium:3, cabin:1 },
       6: { large:0, medium:3, cabin:1 }
     },
-    imgExterior: IMG_BASE + 'innova_crysta_g_exterior.png',
-    imgInterior: IMG_BASE + 'innova_crysta_interior.png',
+    imgExterior: IMG_BASE + 'innova_crysta_exterior.png',
+    imgInterior: IMG_BASE + 'innova_crysta_g_interior.png',
     local: [
       { id:'4hr', label:'4 Hours / 40 KM', km:40, fare:2200, extrakm:25, extrahr:350 },
       { id:'8hr', label:'8 Hours / 80 KM', km:80, fare:4250, extrakm:25, extrahr:350 }
@@ -425,8 +426,8 @@ const VEHICLES = [
       6: { large:0, medium:3, cabin:1 },
       7: { large:0, medium:3, cabin:1 }
     },
-    imgExterior: IMG_BASE + 'innova_crysta_g_exterior.png',
-    imgInterior: IMG_BASE + 'innova_crysta_interior.png',
+    imgExterior: IMG_BASE + 'innova_crysta_exterior.png',
+    imgInterior: IMG_BASE + 'innova_crysta_g_interior.png',
     local: [
       { id:'4hr', label:'4 Hours / 40 KM', km:40, fare:2200, extrakm:25, extrahr:350 },
       { id:'8hr', label:'8 Hours / 80 KM', km:80, fare:4250, extrakm:25, extrahr:350 }
@@ -444,8 +445,8 @@ const VEHICLES = [
       6: { large:0, medium:3, cabin:1 },
       7: { large:0, medium:3, cabin:1 }
     },
-    imgExterior: IMG_BASE + 'innova_crysta_g_exterior.png',
-    imgInterior: IMG_BASE + 'innova_crysta_interior.png',
+    imgExterior: IMG_BASE + 'innova_crysta_exterior.png',
+    imgInterior: IMG_BASE + 'innova_crysta_g_interior.png',
     local: [
       { id:'4hr', label:'4 Hours / 40 KM', km:40, fare:2500, extrakm:30, extrahr:450 },
       { id:'8hr', label:'8 Hours / 80 KM', km:80, fare:4500, extrakm:30, extrahr:450 }
@@ -462,7 +463,7 @@ const VEHICLES = [
       5: { large:0, medium:3, cabin:1 },
       6: { large:0, medium:3, cabin:1 }
     },
-    imgExterior: IMG_BASE + 'innova_crysta_g_exterior.png', imgInterior: IMG_BASE + 'innova_crysta_interior.png',
+    imgExterior: IMG_BASE + 'innova_crysta_exterior.png', imgInterior: IMG_BASE + 'innova_crysta_g_interior.png',
     local: [
       { id:'4hr', label:'4 Hours / 40 KM', km:40, fare:2500, extrakm:30, extrahr:500 },
       { id:'8hr', label:'8 Hours / 80 KM', km:80, fare:5000, extrakm:30, extrahr:500 }
@@ -480,7 +481,7 @@ const VEHICLES = [
       6: { large:0, medium:3, cabin:1 },
       7: { large:0, medium:3, cabin:1 }
     },
-    imgExterior: IMG_BASE + 'innova_crysta_g_exterior.png', imgInterior: IMG_BASE + 'innova_crysta_interior.png',
+    imgExterior: IMG_BASE + 'innova_crysta_exterior.png', imgInterior: IMG_BASE + 'innova_crysta_g_interior.png',
     local: [
       { id:'4hr', label:'4 Hours / 40 KM', km:40, fare:2500, extrakm:30, extrahr:500 },
       { id:'8hr', label:'8 Hours / 80 KM', km:80, fare:5000, extrakm:30, extrahr:500 }
@@ -498,7 +499,7 @@ const VEHICLES = [
       6: { large:0, medium:3, cabin:1 },
       7: { large:0, medium:3, cabin:1 }
     },
-    imgExterior: IMG_BASE + 'innova_crysta_g_exterior.png', imgInterior: IMG_BASE + 'innova_crysta_interior.png',
+    imgExterior: IMG_BASE + 'innova_crysta_exterior.png', imgInterior: IMG_BASE + 'innova_crysta_g_interior.png',
     local: [
       { id:'4hr', label:'4 Hours / 40 KM', km:40, fare:3500, extrakm:70, extrahr:700 },
       { id:'8hr', label:'8 Hours / 80 KM', km:80, fare:7000, extrakm:70, extrahr:700 }
@@ -520,7 +521,7 @@ const VEHICLES = [
       11:{ large:1, medium:1, cabin:2 },
       12:{ large:0, medium:1, cabin:2 }
     },
-    imgExterior: IMG_BASE + 'innova_crysta_g_exterior.png', imgInterior: IMG_BASE + 'innova_crysta_interior.png',
+    imgExterior: IMG_BASE + 'innova_crysta_exterior.png', imgInterior: IMG_BASE + 'innova_crysta_g_interior.png',
     local: [
       { id:'8hr', label:'8 Hours / 80 KM', km:80, fare:12000, extrakm:50, extrahr:1000 }
     ],
@@ -914,14 +915,22 @@ function showPackages(v) {
     // Auto-select for outstation
     setTimeout(() => selectOutPkg(), 100);
   } else {
-    list.innerHTML = v.local.filter(pkg => pkg.fare > 0).map(pkg => `
+    list.innerHTML = v.local.filter(pkg => pkg.fare > 0).map(pkg => {
+      const extraKm = Math.max(0, S.dist - pkg.km);
+      const fitLabel = S.dist > 0
+        ? (extraKm === 0 ? `<span style="color:#1A9E5C;font-size:11px;">✅ ${S.dist} KM fits within ${pkg.km} KM</span>`
+                         : `<span style="color:#D4A020;font-size:11px;">⚠️ ${S.dist} KM exceeds by ${extraKm} KM (+₹${(extraKm * pkg.extrakm).toLocaleString('en-IN')})</span>`)
+        : '';
+      return `
       <div class="pkg-tile" id="pt-${pkg.id}" onclick="selectLocalPkg('${v.id}','${pkg.id}')">
         <div>
           <div class="pkg-name">${pkg.label}</div>
           <div class="pkg-detail">Extra: ₹${pkg.extrakm}/km · ₹${pkg.extrahr}/hr after limit</div>
+          ${fitLabel ? `<div style="margin-top:4px;">${fitLabel}</div>` : ''}
         </div>
         <div class="pkg-price">₹${pkg.fare.toLocaleString('en-IN')}</div>
-      </div>`).join('');
+      </div>`;
+    }).join('');
   }
 
   goTo(3);
@@ -932,12 +941,52 @@ function selectLocalPkg(vid, pkgId) {
   S.pkg = { ...v.local.find(p => p.id === pkgId), type:'local' };
   document.querySelectorAll('.pkg-tile').forEach(t => t.classList.remove('selected'));
   document.getElementById('pt-'+pkgId)?.classList.add('selected');
+
+  // Show package limit feedback
+  const msgEl = document.getElementById('pkgLimitMsg');
+  if (S.dist > 0) {
+    const extraKm = Math.max(0, S.dist - S.pkg.km);
+    if (extraKm === 0) {
+      msgEl.style.display = 'block';
+      msgEl.style.background = '#E8F7EF';
+      msgEl.style.border = '1px solid #A8D8BC';
+      msgEl.innerHTML = `✅ <strong>Within package limits.</strong> Your trip of ${S.dist} KM is within the ${S.pkg.km} KM package. No extra KM charges.`;
+    } else {
+      msgEl.style.display = 'block';
+      msgEl.style.background = '#FFF8E8';
+      msgEl.style.border = '1px solid #F0D060';
+      msgEl.innerHTML = `⚠️ <strong>Exceeds package by ${extraKm} KM.</strong> Your trip is ${S.dist} KM but this package covers ${S.pkg.km} KM. Extra ${extraKm} KM × ₹${S.pkg.extrakm} = ₹${(extraKm * S.pkg.extrakm).toLocaleString('en-IN')} will be added.`;
+    }
+  } else {
+    msgEl.style.display = 'none';
+  }
+
   setTimeout(() => buildQuote(), 200);
 }
 
 function selectOutPkg() {
   S.pkg = { ...S.vehicle.out, id:'out', label:'Outstation Per KM', type:'outstation' };
   document.querySelectorAll('.pkg-tile').forEach(t => t.classList.add('selected'));
+
+  // Show min KM feedback
+  const msgEl = document.getElementById('pkgLimitMsg');
+  if (S.dist > 0) {
+    const minBillable = S.pkg.minKm * S.days;
+    if (S.dist >= minBillable) {
+      msgEl.style.display = 'block';
+      msgEl.style.background = '#E8F7EF';
+      msgEl.style.border = '1px solid #A8D8BC';
+      msgEl.innerHTML = `✅ <strong>Actual distance applies.</strong> Your trip of ${S.dist} KM exceeds the minimum of ${minBillable} KM (${S.pkg.minKm} KM/day × ${S.days} day${S.days>1?'s':''}). Billing based on actual distance.`;
+    } else {
+      msgEl.style.display = 'block';
+      msgEl.style.background = '#FFF8E8';
+      msgEl.style.border = '1px solid #F0D060';
+      msgEl.innerHTML = `⚠️ <strong>Minimum billing applies.</strong> Your trip is ${S.dist} KM but minimum is ${minBillable} KM (${S.pkg.minKm} KM/day × ${S.days} day${S.days>1?'s':''}). You'll be billed for ${minBillable} KM.`;
+    }
+  } else {
+    msgEl.style.display = 'none';
+  }
+
   setTimeout(() => buildQuote(), 200);
 }
 
