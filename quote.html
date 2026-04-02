@@ -286,7 +286,8 @@ body { font-family: var(--sans); background: var(--surface); color: var(--ink); 
   <div class="section-head" style="margin-top:14px;"><div class="section-title">Step 2</div><div class="section-sub">Vehicle Recommendation</div></div>
   <div style="padding:4px 20px 0;font-size:12px;color:var(--ink-light);" id="vehicleSubtext"></div>
   <div id="distanceInfo" class="garage-info" style="display:none;"></div>
-  <div class="usp-msg" id="uspMsg">✨ <strong>APJ Cabs picks you up directly at the arrival gate</strong> — no MLCP walk. Our chauffeur will be waiting with a name board at the exit.</div>
+  <div class="usp-msg" id="uspMsgPickup">✨ <strong>APJ Cabs picks you up directly at the arrival gate</strong> — no MLCP walk. Our chauffeur will be waiting with a name board at the exit.</div>
+  <div class="usp-msg" id="uspMsgDrop">🚗 <strong>Our chauffeur will pick you up on time</strong> and ensure you reach the airport well before your departure. Relax — we handle the drive.</div>
   <div class="notice notice-yellow" id="overnightNotice">⚠️ <strong>Overnight Stay Detected:</strong> Your destination is within 65 KM of our garage, but your trip is multi-day. Multi-day trips outside Chennai city are billed as <strong>Outstation</strong> rates.<div style="margin-top:8px;"><button class="btn btn-gold btn-sm" onclick="document.getElementById('overnightNotice').style.display='none'">Understood</button></div></div>
   <div class="card"><div class="card-body" style="padding:12px;"><div class="vehicle-grid" id="vehicleGrid"></div></div></div>
   <div class="btn-actions"><button class="btn btn-outline" onclick="goTo(1)">← Back</button></div>
@@ -301,6 +302,16 @@ body { font-family: var(--sans); background: var(--surface); color: var(--ink); 
   </div>
   <div id="pkgLimitMsg" style="display:none; margin:10px 20px; padding:12px 16px; border-radius:10px; font-size:13px; line-height:1.6;"></div>
   <div class="notice notice-orange" id="midnightWarn">🕛 <strong>Midnight Reset:</strong> For Chennai local bookings, if the trip extends past 11:59 PM, the package resets. A new 4-hour (or 8-hour if 4hr unavailable) package starts for the next day. This will be confirmed by our team before finalising.</div>
+  <div class="terms" id="bridalTerms" style="display:none;">
+    💍 <strong>Bridal Car Terms:</strong><br>
+    🔹 Minimum 8-hour package applicable.<br>
+    🔹 All bridal cars are white (except Audi A3 Convertible).<br>
+    🔹 Chauffeur-driven only — no self-drive available.<br>
+    🔹 Vehicle washing charges included in the package.<br>
+    🔹 Time and distance calculated from garage to garage (Ashok Nagar, Chennai).<br>
+    🔹 Extra hour and extra KM charges apply beyond the package limit.<br>
+    🔹 Toll, parking and GST are additional.
+  </div>
   <div class="btn-actions">
     <button class="btn btn-gold" id="pkgContinueBtn" style="display:none;" onclick="buildQuote()">Get Quote →</button>
     <button class="btn btn-outline" onclick="goTo(2)">← Back</button>
@@ -544,7 +555,14 @@ window.addEventListener('load', function() {
   else { document.getElementById('headerConvStatus').textContent = 'SESSION ●'; document.getElementById('headerConvStatus').style.color = '#4caf7d'; }
 });
 
+let convRetryCount = 0;
 async function fetchConvId() {
+  convRetryCount++;
+  if (convRetryCount > 10) {
+    document.getElementById('headerConvStatus').textContent = 'OFFLINE ●';
+    document.getElementById('headerConvStatus').style.color = '#D03030';
+    return;
+  }
   try {
     let r = await fetch(BACKEND+'/get-conv-id'); let d = await r.json();
     if (d.found && d.conversation_id) { S.convId = d.conversation_id; document.getElementById('headerConvStatus').textContent = 'SESSION ●'; document.getElementById('headerConvStatus').style.color = '#4caf7d'; return; }
@@ -718,8 +736,9 @@ function buildVehicleList() {
       `<br>📍 Garage: Ashok Nagar, Chennai`;
   }
 
-  // USP for airport
-  document.getElementById('uspMsg').style.display = (S.tripType==='AIRPORT' && S.airportSub==='PICKUP') ? 'block' : 'none';
+  // USP for airport pickup and drop
+  document.getElementById('uspMsgPickup').style.display = (S.tripType==='AIRPORT' && S.airportSub==='PICKUP') ? 'block' : 'none';
+  document.getElementById('uspMsgDrop').style.display = (S.tripType==='AIRPORT' && S.airportSub==='DROP') ? 'block' : 'none';
 
   document.getElementById('vehicleSubtext').textContent =
     `Top ${limited.length} of ${showAll} vehicles for ${pax} pax, ${S.largeBags}L + ${S.medBags}M + ${S.cabinBags}C bags`;
@@ -801,6 +820,8 @@ function showPackages(v) {
   // Midnight warning for evening local bookings
   const hr = S.time ? parseInt(S.time.split(':')[0]) : -1;
   document.getElementById('midnightWarn').style.display = (S.tripType === 'LOCAL' && hr >= 20) ? 'block' : 'none';
+  // Bridal terms
+  document.getElementById('bridalTerms').style.display = isBridal ? 'block' : 'none';
 
   if (isBridal && v.bridal) {
     list.innerHTML = `
@@ -885,6 +906,7 @@ function showPkgFeedback() {
 
 // ═══════════════════ FARE CALCULATION ═══════════════════
 function buildQuote() {
+  if (!S.vehicle || !S.pkg) { alert('Please select a vehicle and package first.'); return; }
   const v = S.vehicle, pkg = S.pkg, dist = S.dist;
   let rows = [], subtotal = 0;
 
