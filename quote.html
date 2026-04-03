@@ -16,14 +16,12 @@
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: var(--sans); background: var(--surface); color: var(--ink); min-height: 100vh; font-size: 14px; -webkit-font-smoothing: antialiased; }
-
 .header { background: var(--dark); padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
 .header-brand { display: flex; align-items: center; gap: 10px; }
 .header-logo { width: 32px; height: 32px; background: var(--gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
 .header-name { font-family: var(--mono); font-size: 13px; font-weight: 500; color: #fff; letter-spacing: 1px; }
 .header-tag { font-size: 10px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
 #headerConvStatus { font-family: var(--mono); font-size: 10px; color: #666; letter-spacing: 1px; }
-
 .stepbar { background: var(--white); border-bottom: 1px solid var(--border); padding: 12px 20px; display: flex; align-items: center; gap: 0; overflow-x: auto; }
 .stepbar::-webkit-scrollbar { display: none; }
 .step-item { display: flex; align-items: center; gap: 0; flex-shrink: 0; }
@@ -35,48 +33,48 @@ body { font-family: var(--sans); background: var(--surface); color: var(--ink); 
 .step-name.done { color: var(--green); }
 .step-conn { width: 28px; height: 2px; background: var(--border); margin: 0 4px; flex-shrink: 0; transition: background 0.3s; }
 .step-conn.done { background: var(--green); }
-
 .page { max-width: 720px; margin: 0 auto; padding: 0 0 40px; }
 .screen { display: none; }
 .screen.active { display: block; }
-
 .section-head { padding: 16px 20px 8px; }
 .section-title { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; color: var(--ink-light); text-transform: uppercase; }
 .section-sub { font-size: 18px; font-weight: 600; margin-top: 4px; }
-
 .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; margin: 10px 20px; overflow: hidden; }
 .card-head { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid var(--border); }
 .card-head-icon { font-size: 18px; }
 .card-head-title { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--ink-mid); }
 .card-body { padding: 16px; }
-
 .field-label { font-family: var(--mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-light); margin-bottom: 6px; }
 .field-input { width: 100%; font-family: var(--sans); font-size: 14px; padding: 10px 12px; border: 1.5px solid var(--border); border-radius: 8px; outline: none; transition: border-color 0.2s; background: var(--white); }
 .field-input:focus { border-color: var(--gold); }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .field-group { margin-bottom: 14px; }
-
 .trip-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
 .trip-tile { padding: 14px 12px; border: 2px solid var(--border); border-radius: 10px; text-align: center; cursor: pointer; transition: all 0.15s; }
 .trip-tile:hover { border-color: var(--gold-border); }
 .trip-tile.selected { border-color: var(--gold); background: var(--gold-light); }
 .trip-tile-icon { font-size: 22px; margin-bottom: 4px; }
 .trip-tile-label { font-size: 12px; font-weight: 600; }
-
 .sub-option-row { display: flex; gap: 8px; margin-top: 8px; }
 .sub-option-btn { flex: 1; padding: 10px; border: 2px solid var(--border); border-radius: 8px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 600; transition: all 0.15s; }
 .sub-option-btn:hover { border-color: var(--gold-border); }
 .sub-option-btn.selected { border-color: var(--gold); background: var(--gold-light); }
-
 .day-row { display: flex; gap: 6px; flex-wrap: wrap; }
 .day-btn { width: 44px; height: 40px; border: 2px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.15s; }
 .day-btn:hover { border-color: var(--gold-border); }
 .day-btn.selected { border-color: var(--gold); background: var(--gold-light); }
-
+.city-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.city-tile { padding: 12px; border: 2px solid var(--border); border-radius: 10px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; gap: 10px; }
+.city-tile:hover { border-color: var(--gold-border); }
+.city-tile.selected { border-color: var(--gold); background: var(--gold-light); }
+.city-tile-icon { font-size: 20px; }
+.city-tile-info { flex: 1; }
+.city-tile-name { font-size: 13px; font-weight: 600; }
+.city-tile-detail { font-size: 10px; color: var(--ink-light); margin-top: 2px; }
+.city-tile-other { grid-column: span 2; text-align: center; border-style: dashed; }
 .cust-strip { display: none; background: var(--gold-light); border: 1px solid var(--gold-border); border-radius: 10px; margin: 10px 20px; padding: 12px 16px; }
 .cust-strip-inner { display: flex; align-items: center; gap: 12px; }
 .cust-avatar { width: 36px; height: 36px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #fff; font-family: var(--mono); }
-
 .vehicle-grid { display: flex; flex-direction: column; gap: 12px; }
 .vehicle-card { border: 2px solid var(--border); border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.2s; }
 .vehicle-card:hover { border-color: var(--gold-border); transform: translateY(-1px); }
@@ -92,7 +90,6 @@ body { font-family: var(--sans); background: var(--surface); color: var(--ink); 
 .vehicle-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
 .vehicle-tag { font-size: 10px; padding: 3px 8px; border-radius: 12px; background: var(--surface); color: var(--ink-mid); border: 1px solid var(--border); }
 .vehicle-luggage { margin-top: 8px; font-size: 11px; color: var(--ink-mid); font-family: var(--mono); }
-
 .pkg-list { display: flex; flex-direction: column; gap: 8px; }
 .pkg-tile { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; border: 2px solid var(--border); border-radius: 10px; cursor: pointer; transition: all 0.15s; }
 .pkg-tile:hover { border-color: var(--gold-border); }
@@ -100,7 +97,6 @@ body { font-family: var(--sans); background: var(--surface); color: var(--ink); 
 .pkg-name { font-size: 13px; font-weight: 600; }
 .pkg-detail { font-size: 11px; color: var(--ink-mid); margin-top: 2px; }
 .pkg-price { font-family: var(--mono); font-size: 15px; font-weight: 700; color: var(--gold); }
-
 .quote-box { background: var(--dark); border-radius: 12px; margin: 10px 20px; overflow: hidden; }
 .quote-header { padding: 16px; display: flex; justify-content: space-between; border-bottom: 1px solid #2a2d3a; }
 .quote-header-label { font-size: 9px; color: #666; letter-spacing: 1.5px; text-transform: uppercase; font-family: var(--mono); }
@@ -114,16 +110,12 @@ body { font-family: var(--sans); background: var(--surface); color: var(--ink); 
 .quote-total { padding: 14px 16px; background: var(--gold-light); display: flex; justify-content: space-between; align-items: center; }
 .qt-label { font-weight: 700; font-size: 14px; color: var(--ink); }
 .qt-value { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--gold); }
-
 .notice { display: none; margin: 10px 20px; padding: 14px 16px; border-radius: 10px; font-size: 13px; line-height: 1.6; }
 .notice-yellow { background: #FFF8E8; border: 1px solid #F0D060; }
 .notice-blue { background: var(--blue-bg); border: 1px solid var(--blue-border); }
 .notice-orange { background: #FFF0E8; border: 1px solid #F0C0A0; }
-.notice-green { background: var(--green-bg); border: 1px solid #A8D8BC; }
-
 .terms { margin: 10px 20px; padding: 14px 16px; background: var(--white); border: 1px solid var(--border); border-radius: 10px; font-size: 12px; color: var(--ink-mid); line-height: 1.7; }
 .disclaimer { margin: 10px 20px; padding: 10px 14px; background: #FFFBE8; border: 1px dashed var(--gold-border); border-radius: 8px; font-size: 11px; color: var(--ink-mid); line-height: 1.5; font-style: italic; }
-
 .btn-actions { padding: 14px 20px; display: flex; flex-direction: column; gap: 8px; }
 .btn { padding: 14px 20px; border-radius: 10px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; text-align: center; transition: all 0.15s; font-family: var(--sans); }
 .btn-gold { background: var(--gold); color: #fff; }
@@ -134,7 +126,6 @@ body { font-family: var(--sans); background: var(--surface); color: var(--ink); 
 .btn-outline:hover { border-color: var(--ink-mid); }
 .btn-sm { padding: 8px 14px; font-size: 12px; }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
 .status-ok { display: none; background: var(--green-bg); color: var(--green); padding: 12px 20px; margin: 10px 20px; border-radius: 10px; text-align: center; font-weight: 600; font-size: 13px; }
 .status-err { display: none; background: var(--red-bg); color: var(--red); padding: 12px 20px; margin: 10px 20px; border-radius: 10px; text-align: center; font-size: 13px; }
 .garage-info { margin: 10px 20px; padding: 10px 14px; background: #F0F4F8; border-radius: 8px; font-size: 12px; color: var(--ink-mid); font-family: var(--mono); }
@@ -172,9 +163,17 @@ body { font-family: var(--sans); background: var(--surface); color: var(--ink); 
   </div>
 </div>
 
-<!-- ═══════════════════════ SCREEN 1 — JOURNEY ═══════════════════════ -->
+<!-- ═══════════════════════ SCREEN 1 ═══════════════════════ -->
 <div class="screen active" id="s1">
   <div class="section-head" style="margin-top:14px;"><div class="section-title">Step 1</div><div class="section-sub">Journey Details</div></div>
+
+  <!-- City Selection -->
+  <div class="card">
+    <div class="card-head"><div class="card-head-icon">🏙️</div><div class="card-head-title">Service City</div></div>
+    <div class="card-body">
+      <div class="city-grid" id="cityGrid"></div>
+    </div>
+  </div>
 
   <!-- Trip Type -->
   <div class="card">
@@ -200,7 +199,6 @@ body { font-family: var(--sans); background: var(--surface); color: var(--ink); 
     </div>
   </div>
 
-  <!-- Airport details -->
   <div class="card" id="airportDetailsCard" style="display:none;">
     <div class="card-head"><div class="card-head-icon">✈️</div><div class="card-head-title">Flight Details</div></div>
     <div class="card-body">
@@ -245,7 +243,7 @@ body { font-family: var(--sans); background: var(--surface); color: var(--ink); 
         <div class="sub-option-btn" id="fd-YES" onclick="selDecoration('YES')">💐 Yes — ₹2,500 onwards</div>
         <div class="sub-option-btn selected" id="fd-NO" onclick="selDecoration('NO')">❌ No Thanks</div>
       </div>
-      <div style="font-size:11px;color:var(--ink-light);margin-top:8px;">Basic flower decoration starts from ₹2,500. Custom designs available — share your preference with our team.</div>
+      <div style="font-size:11px;color:var(--ink-light);margin-top:8px;">Basic flower decoration starts from ₹2,500. Custom designs available.</div>
     </div>
   </div>
 
@@ -253,7 +251,7 @@ body { font-family: var(--sans); background: var(--surface); color: var(--ink); 
   <div class="card">
     <div class="card-head"><div class="card-head-icon">📍</div><div class="card-head-title">Locations</div></div>
     <div class="card-body">
-      <div class="field-group"><div class="field-label" id="pickupLabel">Pickup Location</div><input class="field-input" id="pickup" placeholder="e.g. Anna Nagar, Chennai" autocomplete="off"/></div>
+      <div class="field-group"><div class="field-label" id="pickupLabel">Pickup Location</div><input class="field-input" id="pickup" placeholder="e.g. Anna Nagar" autocomplete="off"/></div>
       <div class="field-group"><div class="field-label" id="dropLabel">Drop Location</div><input class="field-input" id="drop" placeholder="e.g. Chennai Airport" autocomplete="off"/></div>
     </div>
   </div>
@@ -277,23 +275,24 @@ body { font-family: var(--sans); background: var(--surface); color: var(--ink); 
     </div>
   </div>
 
-  <div class="garage-info" id="garageInfo">📍 Distance calculated garage-to-garage. Garage: <strong>Ashok Nagar, Chennai</strong></div>
+  <div class="garage-info" id="garageInfo">📍 Select a city above to see garage location</div>
   <div class="btn-actions"><button class="btn btn-gold" id="step1Btn" onclick="processStep1()">Find Vehicles →</button></div>
 </div>
 
-<!-- ═══════════════════════ SCREEN 2 — VEHICLE ═══════════════════════ -->
+<!-- ═══════════════════════ SCREEN 2 ═══════════════════════ -->
 <div class="screen" id="s2">
   <div class="section-head" style="margin-top:14px;"><div class="section-title">Step 2</div><div class="section-sub">Vehicle Recommendation</div></div>
   <div style="padding:4px 20px 0;font-size:12px;color:var(--ink-light);" id="vehicleSubtext"></div>
   <div id="distanceInfo" class="garage-info" style="display:none;"></div>
   <div class="usp-msg" id="uspMsgPickup">✨ <strong>APJ Cabs picks you up directly at the arrival gate</strong> — no MLCP walk. Our chauffeur will be waiting with a name board at the exit.</div>
-  <div class="usp-msg" id="uspMsgDrop">🚗 <strong>Our chauffeur will pick you up on time</strong> and ensure you reach the airport well before your departure. Relax — we handle the drive.</div>
-  <div class="notice notice-yellow" id="overnightNotice">⚠️ <strong>Overnight Stay Detected:</strong> Your destination is within 65 KM of our garage, but your trip is multi-day. Multi-day trips outside Chennai city are billed as <strong>Outstation</strong> rates.<div style="margin-top:8px;"><button class="btn btn-gold btn-sm" onclick="document.getElementById('overnightNotice').style.display='none'">Understood</button></div></div>
+  <div class="usp-msg" id="uspMsgDrop">🚗 <strong>Our chauffeur will pick you up on time</strong> and ensure you reach the airport well before your departure.</div>
+  <div class="notice notice-yellow" id="overnightNotice">⚠️ <strong>Overnight Stay Detected:</strong> Your destination is within 65 KM of our garage, but your trip is multi-day. Multi-day trips are billed at <strong>Outstation</strong> rates.<div style="margin-top:8px;"><button class="btn btn-gold btn-sm" onclick="document.getElementById('overnightNotice').style.display='none'">Understood</button></div></div>
+  <div class="notice notice-orange" id="panindiaAdvanceNotice" style="display:none;">📋 <strong>Advance Booking:</strong> For bookings outside Chennai, 2 days advance notice is required. Confirmation within 4 hours of booking. Driver details shared 4 hours before travel.</div>
   <div class="card"><div class="card-body" style="padding:12px;"><div class="vehicle-grid" id="vehicleGrid"></div></div></div>
   <div class="btn-actions"><button class="btn btn-outline" onclick="goTo(1)">← Back</button></div>
 </div>
 
-<!-- ═══════════════════════ SCREEN 3 — PACKAGE ═══════════════════════ -->
+<!-- ═══════════════════════ SCREEN 3 ═══════════════════════ -->
 <div class="screen" id="s3">
   <div class="section-head" style="margin-top:14px;"><div class="section-title">Step 3</div><div class="section-sub">Select a Package</div></div>
   <div class="card">
@@ -301,14 +300,13 @@ body { font-family: var(--sans); background: var(--surface); color: var(--ink); 
     <div class="card-body"><div class="pkg-list" id="pkgList"></div></div>
   </div>
   <div id="pkgLimitMsg" style="display:none; margin:10px 20px; padding:12px 16px; border-radius:10px; font-size:13px; line-height:1.6;"></div>
-  <div class="notice notice-orange" id="midnightWarn">🕛 <strong>Midnight Reset:</strong> For Chennai local bookings, if the trip extends past 11:59 PM, the package resets. A new 4-hour (or 8-hour if 4hr unavailable) package starts for the next day. This will be confirmed by our team before finalising.</div>
+  <div class="notice notice-orange" id="midnightWarn">🕛 <strong>Midnight Reset:</strong> For local bookings, if the trip extends past 11:59 PM, the package resets. A new package starts for the next day.</div>
   <div class="terms" id="bridalTerms" style="display:none;">
     💍 <strong>Bridal Car Terms:</strong><br>
     🔹 Minimum 8-hour package applicable.<br>
     🔹 All bridal cars are white (except Audi A3 Convertible).<br>
     🔹 Chauffeur-driven only — no self-drive available.<br>
     🔹 Vehicle washing charges included in the package.<br>
-    🔹 Time and distance calculated from garage to garage (Ashok Nagar, Chennai).<br>
     🔹 Extra hour and extra KM charges apply beyond the package limit.<br>
     🔹 Toll, parking and GST are additional.
   </div>
@@ -318,35 +316,24 @@ body { font-family: var(--sans); background: var(--surface); color: var(--ink); 
   </div>
 </div>
 
-<!-- ═══════════════════════ SCREEN 4 — QUOTE ═══════════════════════ -->
+<!-- ═══════════════════════ SCREEN 4 ═══════════════════════ -->
 <div class="screen" id="s4">
   <div class="section-head" style="margin-top:14px;"><div class="section-title">Step 4</div><div class="section-sub">Your Fare Estimate</div></div>
-
-  <div class="notice notice-yellow" id="onewayNotice">⚠️ <strong>One Way Trip:</strong> Return journey distance from drop back to our garage is included in the fare. This is standard for all one-way outstation trips.<div style="margin-top:10px;display:flex;gap:8px;"><button class="btn btn-gold btn-sm" onclick="document.getElementById('onewayNotice').style.display='none'">Understood, Proceed</button><button class="btn btn-outline btn-sm" onclick="goTo(1)">Modify</button></div></div>
-  <div class="notice notice-blue" id="hillWarning">🏔️ <strong>Hill Station Notice:</strong> Your destination is in a hill station area. Large vehicles and buses may have route restrictions. Our team will confirm vehicle suitability before finalising.</div>
+  <div class="notice notice-yellow" id="onewayNotice">⚠️ <strong>One Way Trip:</strong> Return journey distance from drop back to our garage is included in the fare.<div style="margin-top:10px;display:flex;gap:8px;"><button class="btn btn-gold btn-sm" onclick="document.getElementById('onewayNotice').style.display='none'">Understood, Proceed</button><button class="btn btn-outline btn-sm" onclick="goTo(1)">Modify</button></div></div>
+  <div class="notice notice-blue" id="hillWarning">🏔️ <strong>Hill Station Notice:</strong> Your destination is in a hill station area. Large vehicles may have route restrictions. Our team will confirm vehicle suitability.</div>
   <div class="notice notice-orange" id="permitNotice"></div>
-
   <div class="quote-box" id="quoteBox">
     <div class="quote-header">
       <div><div class="quote-header-label">Booking Estimate</div><div class="quote-header-vehicle" id="qVehicle">—</div></div>
-      <div style="text-align:right;"><div class="quote-header-label">Trip Type</div><div style="font-size:12px;color:#aaa;font-family:var(--mono);" id="qTripType">—</div></div>
+      <div style="text-align:right;"><div class="quote-header-label">Trip</div><div style="font-size:12px;color:#aaa;font-family:var(--mono);" id="qTripType">—</div></div>
     </div>
     <div class="quote-rows" id="quoteRows"></div>
     <div class="quote-total"><div class="qt-label">Total Payable</div><div class="qt-value" id="qTotal">₹0</div></div>
   </div>
-
-  <div class="terms">
-    🔹 Rental includes vehicle hire with fuel and driver.<br>
-    🔹 Toll charges, parking and interstate permits are additional and will be charged as applicable.<br>
-    🔹 Vehicle availability is subject to confirmation at time of booking.<br>
-    🔹 Time and distance calculated from garage to garage (Ashok Nagar, Chennai).
-  </div>
-
-  <div class="disclaimer">⚠️ This is an indicative estimate. Any changes to the details provided — including route, duration, vehicle, or number of passengers — will automatically result in a revised fare. Final confirmation will be provided by our travel advisor.</div>
-
+  <div class="terms" id="quoteTerms"></div>
+  <div class="disclaimer">⚠️ This is an indicative estimate. Any changes to the details provided will automatically result in a revised fare. Final confirmation will be provided by our travel advisor.</div>
   <div class="status-ok" id="statusOk">✅ Your booking summary has been sent to our team!</div>
   <div class="status-err" id="statusErr"></div>
-
   <div id="quoteActions" class="btn-actions">
     <button class="btn btn-dark" id="agentBtn" onclick="talkToAgent()">🧑‍💼 Talk to Agent & Confirm Booking</button>
     <button class="btn btn-outline" onclick="goTo(3)">← Modify Package</button>
@@ -356,89 +343,197 @@ body { font-family: var(--sans); background: var(--surface); color: var(--ink); 
 
 </div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFC0sX7RcQ7Oj2hQkv3Q_HjpbBi67j9SU&libraries=places&callback=initAutocomplete" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFC0sX7RcQ7Oj2hQkv3Q_HjpbBi67j9SU&libraries=places&callback=initMaps" async defer></script>
 
 <script>
 // ═══════════════════ CONFIG ═══════════════════
 const BACKEND = 'https://apjcabs-bridge.onrender.com';
-const GARAGE = { lat: 13.0358, lng: 80.2101, name: 'Ashok Nagar, Chennai' };
 const IMG_BASE = 'https://nive-git19.github.io/apj_test_v2/images/';
 const MAX_VEHICLES_SHOWN = 3;
 
+// ═══════════════════ CITY CONFIG ═══════════════════
+const CITIES = {
+  chennai: {
+    id:'chennai', name:'Chennai', state:'Tamil Nadu', tariff:'chennai',
+    garage: { area:'Ashok Nagar', lat:13.0358, lng:80.2101 },
+    packages: ['4hr','8hr'], minKmOut: 250, advanceNotice: false,
+    airports: [{ code:'MAA', name:'Chennai International Airport' }],
+    bridalAvailable: true
+  },
+  bangalore: {
+    id:'bangalore', name:'Bangalore', state:'Karnataka', tariff:'panindia',
+    garage: { area:'Kammanahalli', lat:13.0134, lng:77.6425 },
+    packages: ['8hr'], minKmOut: 300, advanceNotice: true,
+    airports: [{ code:'BLR', name:'Kempegowda International Airport' }],
+    bridalAvailable: false
+  },
+  delhi: {
+    id:'delhi', name:'Delhi', state:'Delhi', tariff:'panindia',
+    garage: { area:'Red Fort', lat:28.6562, lng:77.2410 },
+    packages: ['8hr'], minKmOut: 300, advanceNotice: true,
+    airports: [{ code:'DEL', name:'Indira Gandhi International Airport' }],
+    bridalAvailable: false
+  },
+  mumbai: {
+    id:'mumbai', name:'Mumbai', state:'Maharashtra', tariff:'panindia',
+    garage: { area:'Marine Drive', lat:18.9432, lng:72.8235 },
+    packages: ['8hr'], minKmOut: 300, advanceNotice: true,
+    airports: [{ code:'BOM', name:'Chhatrapati Shivaji International Airport' }],
+    bridalAvailable: false
+  }
+};
+
 // ═══════════════════ VEHICLE MASTER ═══════════════════
+// Each vehicle has tariffs keyed by tariff type: chennai or panindia
 const VEHICLES = [
   { id:'innova_g_6', name:'Innova Crysta G', config:'6+1', category:'SUV', paxRange:[1,6],
     luggage:{ 1:{large:3,medium:3,cabin:3}, 2:{large:2,medium:3,cabin:2}, 3:{large:2,medium:2,cabin:2}, 4:{large:2,medium:1,cabin:2}, 5:{large:0,medium:3,cabin:1}, 6:{large:0,medium:3,cabin:1} },
     imgExterior: IMG_BASE+'innova_crysta_exterior.png', imgInterior: IMG_BASE+'innova_crysta_g_interior.png',
-    local:[ {id:'4hr',label:'4 Hours / 40 KM',km:40,fare:2200,extrakm:25,extrahr:350}, {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:4250,extrakm:25,extrahr:350} ],
-    bridal:{ fare:5000, extrakm:25, extrahr:350 },
-    out:{ perKm:25, minKm:250, batta:750, nightHalt:500 },
     nightAllowance: 300,
-    permits:{ pondicherry:1000, andhra:1200, kerala:1000, karnataka:1500 }
+    tariffs: {
+      chennai: {
+        local:[ {id:'4hr',label:'4 Hours / 40 KM',km:40,fare:2200,extrakm:25,extrahr:350}, {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:4250,extrakm:25,extrahr:350} ],
+        out:{ perKm:25, minKm:250, batta:750, nightHalt:500 },
+        bridal:{ fare:5000, extrakm:25, extrahr:350 },
+        permits:{ pondicherry:1000, andhra:1200, kerala:1000, karnataka:1500 }
+      },
+      panindia: {
+        local:[ {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:4250,extrakm:25,extrahr:350} ],
+        out:{ perKm:25, minKm:300, batta:750, nightHalt:400 },
+        bridal: null,
+        permits: 'actuals'
+      }
+    }
   },
   { id:'innova_g_7', name:'Innova Crysta G', config:'7+1', category:'SUV', paxRange:[1,7],
     luggage:{ 1:{large:3,medium:4,cabin:3}, 2:{large:3,medium:3,cabin:3}, 3:{large:2,medium:3,cabin:3}, 4:{large:2,medium:2,cabin:2}, 5:{large:2,medium:1,cabin:2}, 6:{large:0,medium:3,cabin:1}, 7:{large:0,medium:3,cabin:1} },
     imgExterior: IMG_BASE+'innova_crysta_exterior.png', imgInterior: IMG_BASE+'innova_crysta_g_interior.png',
-    local:[ {id:'4hr',label:'4 Hours / 40 KM',km:40,fare:2200,extrakm:25,extrahr:350}, {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:4250,extrakm:25,extrahr:350} ],
-    bridal:{ fare:5000, extrakm:25, extrahr:350 },
-    out:{ perKm:25, minKm:250, batta:750, nightHalt:500 },
     nightAllowance: 300,
-    permits:{ pondicherry:1000, andhra:1200, kerala:1000, karnataka:1500 }
+    tariffs: {
+      chennai: {
+        local:[ {id:'4hr',label:'4 Hours / 40 KM',km:40,fare:2200,extrakm:25,extrahr:350}, {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:4250,extrakm:25,extrahr:350} ],
+        out:{ perKm:25, minKm:250, batta:750, nightHalt:500 },
+        bridal:{ fare:5000, extrakm:25, extrahr:350 },
+        permits:{ pondicherry:1000, andhra:1200, kerala:1000, karnataka:1500 }
+      },
+      panindia: {
+        local:[ {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:4250,extrakm:25,extrahr:350} ],
+        out:{ perKm:25, minKm:300, batta:750, nightHalt:400 },
+        bridal: null,
+        permits: 'actuals'
+      }
+    }
   },
   { id:'innova_v_7', name:'Innova Crysta V', config:'7+1', category:'Premium SUV', paxRange:[1,7],
     luggage:{ 1:{large:3,medium:4,cabin:3}, 2:{large:3,medium:3,cabin:3}, 3:{large:2,medium:3,cabin:3}, 4:{large:2,medium:2,cabin:2}, 5:{large:2,medium:1,cabin:2}, 6:{large:0,medium:3,cabin:1}, 7:{large:0,medium:3,cabin:1} },
     imgExterior: IMG_BASE+'innova_crysta_exterior.png', imgInterior: IMG_BASE+'innova_crysta_g_interior.png',
-    local:[ {id:'4hr',label:'4 Hours / 40 KM',km:40,fare:2500,extrakm:30,extrahr:450}, {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:4500,extrakm:30,extrahr:450} ],
-    bridal:{ fare:5250, extrakm:30, extrahr:450 },
-    out:{ perKm:30, minKm:250, batta:750, nightHalt:500 },
     nightAllowance: 300,
-    permits:{ pondicherry:1000, andhra:1200, kerala:1000, karnataka:1500 }
+    tariffs: {
+      chennai: {
+        local:[ {id:'4hr',label:'4 Hours / 40 KM',km:40,fare:2500,extrakm:30,extrahr:450}, {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:4500,extrakm:30,extrahr:450} ],
+        out:{ perKm:30, minKm:250, batta:750, nightHalt:500 },
+        bridal:{ fare:5250, extrakm:30, extrahr:450 },
+        permits:{ pondicherry:1000, andhra:1200, kerala:1000, karnataka:1500 }
+      },
+      panindia: {
+        local:[ {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:4750,extrakm:30,extrahr:400} ],
+        out:{ perKm:30, minKm:300, batta:750, nightHalt:400 },
+        bridal: null,
+        permits: 'actuals'
+      }
+    }
   },
   { id:'hycross_6', name:'Innova Hycross', config:'6+1', category:'SUV', paxRange:[1,6],
     luggage:{ 1:{large:3,medium:3,cabin:3}, 2:{large:2,medium:3,cabin:2}, 3:{large:2,medium:2,cabin:2}, 4:{large:2,medium:1,cabin:2}, 5:{large:0,medium:3,cabin:1}, 6:{large:0,medium:3,cabin:1} },
     imgExterior: IMG_BASE+'innova_crysta_exterior.png', imgInterior: IMG_BASE+'innova_crysta_g_interior.png',
-    local:[ {id:'4hr',label:'4 Hours / 40 KM',km:40,fare:2500,extrakm:30,extrahr:500}, {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:5000,extrakm:30,extrahr:500} ],
-    bridal:{ fare:5750, extrakm:30, extrahr:500 },
-    out:{ perKm:30, minKm:250, batta:750, nightHalt:500 },
     nightAllowance: 300,
-    permits:{ pondicherry:1000, andhra:1200, kerala:1000, karnataka:1500 }
+    tariffs: {
+      chennai: {
+        local:[ {id:'4hr',label:'4 Hours / 40 KM',km:40,fare:2500,extrakm:30,extrahr:500}, {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:5000,extrakm:30,extrahr:500} ],
+        out:{ perKm:30, minKm:250, batta:750, nightHalt:500 },
+        bridal:{ fare:5750, extrakm:30, extrahr:500 },
+        permits:{ pondicherry:1000, andhra:1200, kerala:1000, karnataka:1500 }
+      },
+      panindia: {
+        local:[ {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:5250,extrakm:32,extrahr:450} ],
+        out:{ perKm:32, minKm:300, batta:750, nightHalt:400 },
+        bridal: null,
+        permits: 'actuals'
+      }
+    }
   },
   { id:'hycross_7', name:'Innova Hycross', config:'7+1', category:'SUV', paxRange:[1,7],
     luggage:{ 1:{large:3,medium:4,cabin:3}, 2:{large:3,medium:3,cabin:3}, 3:{large:2,medium:3,cabin:3}, 4:{large:2,medium:2,cabin:2}, 5:{large:2,medium:1,cabin:2}, 6:{large:0,medium:3,cabin:1}, 7:{large:0,medium:3,cabin:1} },
     imgExterior: IMG_BASE+'innova_crysta_exterior.png', imgInterior: IMG_BASE+'innova_crysta_g_interior.png',
-    local:[ {id:'4hr',label:'4 Hours / 40 KM',km:40,fare:2500,extrakm:30,extrahr:500}, {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:5000,extrakm:30,extrahr:500} ],
-    bridal:{ fare:5750, extrakm:30, extrahr:500 },
-    out:{ perKm:30, minKm:250, batta:750, nightHalt:500 },
     nightAllowance: 300,
-    permits:{ pondicherry:1000, andhra:1200, kerala:1000, karnataka:1500 }
+    tariffs: {
+      chennai: {
+        local:[ {id:'4hr',label:'4 Hours / 40 KM',km:40,fare:2500,extrakm:30,extrahr:500}, {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:5000,extrakm:30,extrahr:500} ],
+        out:{ perKm:30, minKm:250, batta:750, nightHalt:500 },
+        bridal:{ fare:5750, extrakm:30, extrahr:500 },
+        permits:{ pondicherry:1000, andhra:1200, kerala:1000, karnataka:1500 }
+      },
+      panindia: {
+        local:[ {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:5250,extrakm:32,extrahr:450} ],
+        out:{ perKm:32, minKm:300, batta:750, nightHalt:400 },
+        bridal: null,
+        permits: 'actuals'
+      }
+    }
   },
   { id:'fortuner', name:'Toyota Fortuner', config:'7+1', category:'SUV', paxRange:[1,7],
     luggage:{ 1:{large:3,medium:4,cabin:3}, 2:{large:3,medium:3,cabin:3}, 3:{large:2,medium:3,cabin:3}, 4:{large:2,medium:2,cabin:2}, 5:{large:2,medium:1,cabin:2}, 6:{large:0,medium:3,cabin:1}, 7:{large:0,medium:3,cabin:1} },
     imgExterior: IMG_BASE+'innova_crysta_exterior.png', imgInterior: IMG_BASE+'innova_crysta_g_interior.png',
-    local:[ {id:'4hr',label:'4 Hours / 40 KM',km:40,fare:3500,extrakm:70,extrahr:700}, {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:7000,extrakm:70,extrahr:700} ],
-    bridal:{ fare:7000, extrakm:70, extrahr:700 },
-    out:{ perKm:70, minKm:250, batta:750, nightHalt:500 },
     nightAllowance: 500,
-    permits:{ pondicherry:600, andhra:1200, kerala:600, karnataka:1800 }
+    tariffs: {
+      chennai: {
+        local:[ {id:'4hr',label:'4 Hours / 40 KM',km:40,fare:3500,extrakm:70,extrahr:700}, {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:7000,extrakm:70,extrahr:700} ],
+        out:{ perKm:70, minKm:250, batta:750, nightHalt:500 },
+        bridal:{ fare:7000, extrakm:70, extrahr:700 },
+        permits:{ pondicherry:600, andhra:1200, kerala:600, karnataka:1800 }
+      },
+      panindia: {
+        local:[ {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:7000,extrakm:65,extrahr:700} ],
+        out:{ perKm:65, minKm:300, batta:750, nightHalt:400 },
+        bridal: null,
+        permits: 'actuals'
+      }
+    }
   },
   { id:'urbania_12', name:'Force Urbania', config:'12+1', category:'MPV', paxRange:[4,12],
     luggage:{ 4:{large:4,medium:4,cabin:4}, 5:{large:4,medium:3,cabin:4}, 6:{large:3,medium:3,cabin:3}, 7:{large:3,medium:3,cabin:3}, 8:{large:2,medium:3,cabin:3}, 9:{large:2,medium:2,cabin:3}, 10:{large:1,medium:2,cabin:2}, 11:{large:1,medium:1,cabin:2}, 12:{large:0,medium:1,cabin:2} },
     imgExterior: IMG_BASE+'innova_crysta_exterior.png', imgInterior: IMG_BASE+'innova_crysta_g_interior.png',
-    local:[ {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:12000,extrakm:50,extrahr:1000} ],
-    bridal: null,
-    out:{ perKm:50, minKm:300, batta:1000, nightHalt:500 },
     nightAllowance: 1000,
-    permits:{ pondicherry:2000, andhra:3500, kerala:2000, karnataka:3000 }
+    tariffs: {
+      chennai: {
+        local:[ {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:12000,extrakm:50,extrahr:1000} ],
+        out:{ perKm:50, minKm:300, batta:1000, nightHalt:500 },
+        bridal: null,
+        permits:{ pondicherry:2000, andhra:3500, kerala:2000, karnataka:3000 }
+      },
+      panindia: {
+        local:[ {id:'8hr',label:'8 Hours / 80 KM',km:80,fare:12000,extrakm:55,extrahr:750} ],
+        out:{ perKm:55, minKm:300, batta:1000, nightHalt:500 },
+        bridal: null,
+        permits: 'actuals'
+      }
+    }
   }
 ];
 
-const HILL_STATIONS = ['ooty','kodaikanal','yercaud','munnar','coonoor','valparai','yelagiri','coorg','wayanad','kodagu','meghamalai','kolli hills','javadi hills','sirumalai','topslip'];
+const HILL_STATIONS = ['ooty','kodaikanal','yercaud','munnar','coonoor','valparai','yelagiri','coorg','wayanad','kodagu','meghamalai','kolli hills','javadi hills','sirumalai','topslip','kotagiri','thekkady','vagamon','ponmudi','devikulam','chikmagalur','sakleshpur','nandi hills','horsley hills','araku valley','lambasingi','mahabaleshwar','lonavala','matheran','mount abu','shimla','manali','darjeeling','mussoorie','nainital'];
 
 const STATE_KEYWORDS = {
-  kerala: ['kochi','trivandrum','thiruvananthapuram','munnar','alleppey','alappuzha','calicut','kozhikode','thrissur','kannur','wayanad','palakkad','kollam','kottayam','ernakulam','kerala','idukki','pathanamthitta'],
-  karnataka: ['bangalore','bengaluru','mysore','mysuru','mangalore','mangaluru','coorg','kodagu','hubli','hampi','karnataka','hassan','shimoga','ooty route'],
-  andhra: ['hyderabad','visakhapatnam','vizag','vijayawada','tirupati','amaravati','guntur','kakinada','andhra pradesh','nellore','rajahmundry','telangana'],
-  pondicherry: ['pondicherry','puducherry','auroville','karaikal']
+  tamilnadu: ['chennai','madurai','trichy','coimbatore','salem','vellore','erode','thanjavur','tirunelveli','thoothukudi','dindigul','kanchipuram','chengalpattu','mahabalipuram','mahabs','hosur','karur','nagapattinam','cuddalore','tamil nadu'],
+  kerala: ['kochi','trivandrum','thiruvananthapuram','munnar','alleppey','alappuzha','calicut','kozhikode','thrissur','kannur','wayanad','palakkad','kollam','kottayam','ernakulam','kerala','idukki','pathanamthitta','thekkady'],
+  karnataka: ['bangalore','bengaluru','mysore','mysuru','mangalore','mangaluru','coorg','kodagu','hubli','hampi','karnataka','hassan','shimoga','chikmagalur'],
+  andhra: ['visakhapatnam','vizag','vijayawada','tirupati','amaravati','guntur','kakinada','andhra pradesh','nellore','rajahmundry','kurnool'],
+  telangana: ['hyderabad','secunderabad','warangal','telangana'],
+  pondicherry: ['pondicherry','puducherry','auroville','karaikal'],
+  maharashtra: ['mumbai','pune','nashik','nagpur','aurangabad','maharashtra','thane','navi mumbai','lonavala','mahabaleshwar'],
+  delhi: ['delhi','new delhi','noida','gurgaon','gurugram','faridabad','ghaziabad'],
+  rajasthan: ['jaipur','udaipur','jodhpur','jaisalmer','rajasthan','mount abu','ajmer','pushkar'],
+  goa: ['goa','panaji','margao','vasco']
 };
 
 // ═══════════════════ STATE ═══════════════════
@@ -450,16 +545,50 @@ const S = {
   dist:0, farthestFromGarage:0,
   tripType:'', dropType:'ROUND', days:1,
   airportSub:'PICKUP', flightNo:'', flightTime:'',
-  decoration: false,
+  decoration:false,
   vehicle:null, pkg:null, fare:0, convId:null,
-  detectedState:null, isHillStation:false,
-  isNightTrip:false
+  detectedState:null, isHillStation:false, isNightTrip:false,
+  city: null  // selected city config
 };
+
+// Helper: get tariff for current city
+function T(vehicle) {
+  if (!S.city) return vehicle.tariffs.chennai;
+  return vehicle.tariffs[S.city.tariff] || vehicle.tariffs.panindia;
+}
+
+// ═══════════════════ CITY SELECTION ═══════════════════
+function buildCityGrid() {
+  const grid = document.getElementById('cityGrid');
+  const cityList = Object.values(CITIES);
+  grid.innerHTML = cityList.map(c => `
+    <div class="city-tile" id="ct-${c.id}" onclick="selCity('${c.id}')">
+      <div class="city-tile-icon">${c.id==='chennai'?'🏛️':c.id==='bangalore'?'🌳':c.id==='delhi'?'🕌':c.id==='mumbai'?'🌊':'🏙️'}</div>
+      <div class="city-tile-info">
+        <div class="city-tile-name">${c.name}</div>
+        <div class="city-tile-detail">Garage: ${c.garage.area}</div>
+      </div>
+    </div>`).join('') +
+    `<div class="city-tile city-tile-other" onclick="alert('This city is not yet available. Our team will confirm availability within 2 working days.')">
+      <div class="city-tile-info"><div class="city-tile-name">Other City</div><div class="city-tile-detail">We'll check and get back</div></div>
+    </div>`;
+}
+
+function selCity(cityId) {
+  S.city = CITIES[cityId];
+  document.querySelectorAll('.city-tile').forEach(t => t.classList.remove('selected'));
+  document.getElementById('ct-'+cityId)?.classList.add('selected');
+  document.getElementById('garageInfo').innerHTML = `📍 Distance calculated garage-to-garage. Garage: <strong>${S.city.garage.area}, ${S.city.name}</strong>`;
+
+  // Show/hide bridal based on city
+  const bridalTile = document.getElementById('tt-BRIDAL');
+  if (bridalTile) bridalTile.style.display = S.city.bridalAvailable ? 'block' : 'none';
+}
 
 // ═══════════════════ GOOGLE MAPS ═══════════════════
 let pickupAC, dropAC;
 
-function initAutocomplete() {
+function initMaps() {
   const opts = { componentRestrictions:{country:'in'}, fields:['formatted_address','geometry','address_components'] };
   pickupAC = new google.maps.places.Autocomplete(document.getElementById('pickup'), opts);
   dropAC   = new google.maps.places.Autocomplete(document.getElementById('drop'), opts);
@@ -476,6 +605,9 @@ function initAutocomplete() {
       S.isHillStation = HILL_STATIONS.some(h => S.drop.toLowerCase().includes(h));
     }
   });
+
+  // Build city grid after maps loaded
+  buildCityGrid();
 }
 
 function detectState(components) {
@@ -485,98 +617,76 @@ function detectState(components) {
   for (const [state, keywords] of Object.entries(STATE_KEYWORDS)) {
     if (keywords.some(k => fullAddr.includes(k))) { S.detectedState = state; return; }
   }
-  if (fullAddr.includes('tamil nadu')) S.detectedState = 'tamilnadu';
 }
 
-// ═══════════════════ DISTANCE CALC ═══════════════════
-// Returns { total, farthest } — total = garage-to-garage, farthest = max distance of any stop from garage
+// ═══════════════════ DISTANCE ═══════════════════
 function calcDistances() {
   return new Promise((resolve) => {
-    if (!S.pickupCoords || !S.dropCoords) { resolve({ total:0, farthest:0 }); return; }
-
+    if (!S.pickupCoords || !S.dropCoords || !S.city) { resolve({total:0,farthest:0}); return; }
     const svc = new google.maps.DistanceMatrixService();
-    const gLL = new google.maps.LatLng(GARAGE.lat, GARAGE.lng);
+    const gLL = new google.maps.LatLng(S.city.garage.lat, S.city.garage.lng);
     const pLL = new google.maps.LatLng(S.pickupCoords.lat, S.pickupCoords.lng);
     const dLL = new google.maps.LatLng(S.dropCoords.lat, S.dropCoords.lng);
 
-    let legs, farthestLegs;
+    let legs;
     if (S.tripType === 'OUTSTATION' && S.dropType === 'ROUND') {
-      // Outstation round trip: Garage → Pickup → Drop → Pickup → Garage
       legs = [[gLL,pLL],[pLL,dLL],[dLL,pLL],[pLL,gLL]];
     } else {
-      // LOCAL, AIRPORT, BRIDAL, ONE-WAY: Garage → Pickup → Drop → Garage
       legs = [[gLL,pLL],[pLL,dLL],[dLL,gLL]];
     }
-    // Farthest from garage: measure garage→pickup and garage→drop
-    farthestLegs = [[gLL,pLL],[gLL,dLL]];
+    const farthestLegs = [[gLL,pLL],[gLL,dLL]];
 
-    let totalDist = 0, farthest = 0, c1 = 0, c2 = 0;
-
-    // Calc total route
+    let totalDist=0, farthest=0, c1=0, c2=0;
     legs.forEach(([o,d]) => {
-      svc.getDistanceMatrix({ origins:[o], destinations:[d], travelMode:'DRIVING' }, (r, st) => {
+      svc.getDistanceMatrix({origins:[o],destinations:[d],travelMode:'DRIVING'}, (r,st) => {
         c1++;
         if (st==='OK' && r.rows[0].elements[0].status==='OK') totalDist += r.rows[0].elements[0].distance.value;
-        if (c1 === legs.length) checkDone();
+        if (c1===legs.length) checkDone();
       });
     });
-
-    // Calc farthest point from garage
     farthestLegs.forEach(([o,d]) => {
-      svc.getDistanceMatrix({ origins:[o], destinations:[d], travelMode:'DRIVING' }, (r, st) => {
+      svc.getDistanceMatrix({origins:[o],destinations:[d],travelMode:'DRIVING'}, (r,st) => {
         c2++;
         if (st==='OK' && r.rows[0].elements[0].status==='OK') {
-          const km = r.rows[0].elements[0].distance.value / 1000;
-          if (km > farthest) farthest = km;
+          const km = r.rows[0].elements[0].distance.value/1000;
+          if (km>farthest) farthest=km;
         }
-        if (c2 === farthestLegs.length) checkDone();
+        if (c2===farthestLegs.length) checkDone();
       });
     });
-
-    function checkDone() {
-      if (c1 === legs.length && c2 === farthestLegs.length) {
-        resolve({ total: Math.round(totalDist/1000), farthest: Math.round(farthest) });
-      }
-    }
+    function checkDone() { if (c1===legs.length && c2===farthestLegs.length) resolve({total:Math.round(totalDist/1000), farthest:Math.round(farthest)}); }
   });
 }
 
 // ═══════════════════ INIT ═══════════════════
 window.addEventListener('load', function() {
   const p = new URLSearchParams(window.location.search);
-  S.name = p.get('name') || ''; S.phone = p.get('phone') || ''; S.convId = p.get('conversation_id') || null;
+  S.name = p.get('name')||''; S.phone = p.get('phone')||''; S.convId = p.get('conversation_id')||null;
   document.getElementById('journeyDate').value = new Date().toISOString().split('T')[0];
   if (S.name) {
     document.getElementById('custInitial').textContent = S.name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
-    document.getElementById('custGreet').textContent = 'Hi, ' + S.name + '!';
+    document.getElementById('custGreet').textContent = 'Hi, '+S.name+'!';
     document.getElementById('custStripWrap').style.display = 'block';
   }
   if (!S.convId) fetchConvId();
-  else { document.getElementById('headerConvStatus').textContent = 'SESSION ●'; document.getElementById('headerConvStatus').style.color = '#4caf7d'; }
+  else { document.getElementById('headerConvStatus').textContent='SESSION ●'; document.getElementById('headerConvStatus').style.color='#4caf7d'; }
 });
 
-let convRetryCount = 0;
 async function fetchConvId() {
-  convRetryCount++;
-  if (convRetryCount > 10) {
-    document.getElementById('headerConvStatus').textContent = 'OFFLINE ●';
-    document.getElementById('headerConvStatus').style.color = '#D03030';
-    return;
-  }
   try {
-    let r = await fetch(BACKEND+'/get-conv-id'); let d = await r.json();
-    if (d.found && d.conversation_id) { S.convId = d.conversation_id; document.getElementById('headerConvStatus').textContent = 'SESSION ●'; document.getElementById('headerConvStatus').style.color = '#4caf7d'; return; }
-    r = await fetch(BACKEND+'/get-latest-conv'); d = await r.json();
-    if (d.found && d.conversation_id) { S.convId = d.conversation_id; document.getElementById('headerConvStatus').textContent = 'SESSION ●'; document.getElementById('headerConvStatus').style.color = '#4caf7d'; return; }
-    document.getElementById('headerConvStatus').textContent = 'CONNECTING...'; document.getElementById('headerConvStatus').style.color = '#f5a623';
+    let r=await fetch(BACKEND+'/get-conv-id'); let d=await r.json();
+    if (d.found&&d.conversation_id) { S.convId=d.conversation_id; document.getElementById('headerConvStatus').textContent='SESSION ●'; document.getElementById('headerConvStatus').style.color='#4caf7d'; return; }
+    r=await fetch(BACKEND+'/get-latest-conv'); d=await r.json();
+    if (d.found&&d.conversation_id) { S.convId=d.conversation_id; document.getElementById('headerConvStatus').textContent='SESSION ●'; document.getElementById('headerConvStatus').style.color='#4caf7d'; return; }
+    document.getElementById('headerConvStatus').textContent='CONNECTING...'; document.getElementById('headerConvStatus').style.color='#f5a623';
     setTimeout(fetchConvId, 3000);
   } catch(e) { setTimeout(fetchConvId, 3000); }
 }
 
-// ═══════════════════ NAVIGATION ═══════════════════
+// ═══════════════════ NAV ═══════════════════
 function goTo(n) {
   document.querySelectorAll('.screen').forEach((s,i) => s.classList.toggle('active', i+1===n));
-  for (let i=1; i<=4; i++) {
+  for (let i=1;i<=4;i++) {
     const dot=document.getElementById('sd'+i), nm=document.getElementById('sn'+i);
     dot.classList.remove('active','done'); nm.classList.remove('active','done');
     if (i<n) { dot.classList.add('done'); dot.textContent='✓'; nm.classList.add('done'); }
@@ -587,455 +697,369 @@ function goTo(n) {
   window.scrollTo(0,0);
 }
 
-// ═══════════════════ TRIP TYPE SELECTION ═══════════════════
+// ═══════════════════ SELECTIONS ═══════════════════
 function selTripType(type) {
   S.tripType = type;
   ['LOCAL','OUTSTATION','AIRPORT','BRIDAL'].forEach(t => document.getElementById('tt-'+t)?.classList.toggle('selected', t===type));
-
-  document.getElementById('airportSubCard').style.display     = type==='AIRPORT' ? 'block' : 'none';
-  document.getElementById('airportDetailsCard').style.display  = type==='AIRPORT' ? 'block' : 'none';
-  document.getElementById('dropTypeCard').style.display        = type==='OUTSTATION' ? 'block' : 'none';
-  document.getElementById('outstationDaysCard').style.display  = type==='OUTSTATION' ? 'block' : 'none';
-  document.getElementById('bridalDecoCard').style.display      = type==='BRIDAL' ? 'block' : 'none';
-
-  // Update labels for airport
-  if (type==='AIRPORT') {
-    selAirportSub(S.airportSub);
-  } else {
-    document.getElementById('pickupLabel').textContent = 'Pickup Location';
-    document.getElementById('dropLabel').textContent   = 'Drop Location';
-  }
-
-  if (type==='LOCAL' || type==='BRIDAL') { S.dropType='ROUND'; S.days=1; }
+  document.getElementById('airportSubCard').style.display = type==='AIRPORT'?'block':'none';
+  document.getElementById('airportDetailsCard').style.display = type==='AIRPORT'?'block':'none';
+  document.getElementById('dropTypeCard').style.display = type==='OUTSTATION'?'block':'none';
+  document.getElementById('outstationDaysCard').style.display = type==='OUTSTATION'?'block':'none';
+  document.getElementById('bridalDecoCard').style.display = type==='BRIDAL'?'block':'none';
+  if (type==='AIRPORT') selAirportSub(S.airportSub);
+  else { document.getElementById('pickupLabel').textContent='Pickup Location'; document.getElementById('dropLabel').textContent='Drop Location'; }
+  if (type==='LOCAL'||type==='BRIDAL') { S.dropType='ROUND'; S.days=1; }
   if (type==='AIRPORT') { S.dropType='DROP_ONLY'; S.days=1; }
 }
 
 function selAirportSub(sub) {
   S.airportSub = sub;
-  document.querySelectorAll('#airportSubCard .sub-option-btn').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('#airportSubCard .sub-option-btn').forEach(b=>b.classList.remove('selected'));
   document.getElementById('as-'+sub)?.classList.add('selected');
-  if (sub==='PICKUP') {
-    document.getElementById('pickupLabel').textContent = 'Airport (Arrival)';
-    document.getElementById('dropLabel').textContent   = 'Drop Location';
-    document.getElementById('flightTimeLabel').textContent = 'Arrival Time';
-  } else {
-    document.getElementById('pickupLabel').textContent = 'Pickup Location';
-    document.getElementById('dropLabel').textContent   = 'Airport (Departure)';
-    document.getElementById('flightTimeLabel').textContent = 'Departure Time';
-  }
+  document.getElementById('pickupLabel').textContent = sub==='PICKUP' ? 'Airport (Arrival)' : 'Pickup Location';
+  document.getElementById('dropLabel').textContent = sub==='PICKUP' ? 'Drop Location' : 'Airport (Departure)';
+  document.getElementById('flightTimeLabel').textContent = sub==='PICKUP' ? 'Arrival Time' : 'Departure Time';
 }
 
 function selDropType(type) { S.dropType=type; document.querySelectorAll('#dropTypeCard .sub-option-btn').forEach(b=>b.classList.remove('selected')); document.getElementById('dt-'+type)?.classList.add('selected'); }
 function selDays(n) { S.days=n; document.querySelectorAll('.day-btn').forEach((b,i)=>b.classList.toggle('selected',i+1===n)); }
-function selDecoration(v) { S.decoration = v==='YES'; document.querySelectorAll('#bridalDecoCard .sub-option-btn').forEach(b=>b.classList.remove('selected')); document.getElementById('fd-'+v)?.classList.add('selected'); }
+function selDecoration(v) { S.decoration=v==='YES'; document.querySelectorAll('#bridalDecoCard .sub-option-btn').forEach(b=>b.classList.remove('selected')); document.getElementById('fd-'+v)?.classList.add('selected'); }
 
 // ═══════════════════ PROCESS STEP 1 ═══════════════════
 async function processStep1() {
-  S.pickup = document.getElementById('pickup').value || S.pickup;
-  S.drop   = document.getElementById('drop').value || S.drop;
-  S.pax    = parseInt(document.getElementById('pax').value) || 1;
-  S.largeBags = parseInt(document.getElementById('largeBags').value) || 0;
-  S.medBags   = parseInt(document.getElementById('medBags').value) || 0;
-  S.cabinBags = parseInt(document.getElementById('cabinBags').value) || 0;
-  S.date = document.getElementById('journeyDate').value || '';
-  S.time = document.getElementById('journeyTime').value || '';
-  S.flightNo   = document.getElementById('flightNo').value || '';
-  S.flightTime  = document.getElementById('flightTime').value || '';
+  if (!S.city) { alert('Please select a service city'); return; }
+
+  S.pickup = document.getElementById('pickup').value||S.pickup;
+  S.drop = document.getElementById('drop').value||S.drop;
+  S.pax = parseInt(document.getElementById('pax').value)||1;
+  S.largeBags = parseInt(document.getElementById('largeBags').value)||0;
+  S.medBags = parseInt(document.getElementById('medBags').value)||0;
+  S.cabinBags = parseInt(document.getElementById('cabinBags').value)||0;
+  S.date = document.getElementById('journeyDate').value||'';
+  S.time = document.getElementById('journeyTime').value||'';
+  S.flightNo = document.getElementById('flightNo').value||'';
+  S.flightTime = document.getElementById('flightTime').value||'';
 
   if (!S.tripType) { alert('Please select a trip type'); return; }
-  if (!S.pickup || !S.drop) { alert('Please enter pickup and drop locations'); return; }
-  if (!S.pax || S.pax < 1) { alert('Please enter number of passengers'); return; }
+  if (!S.pickup||!S.drop) { alert('Please enter pickup and drop locations'); return; }
+  if (!S.pax||S.pax<1) { alert('Please enter number of passengers'); return; }
 
-  // Night trip detection — check journeyTime AND flightTime for airport
+  // Night detection
   let hr = S.time ? parseInt(S.time.split(':')[0]) : -1;
-  if (S.tripType === 'AIRPORT' && S.flightTime) {
-    hr = parseInt(S.flightTime.split(':')[0]);
-  }
-  S.isNightTrip = (hr >= 22 || (hr >= 0 && hr < 6));
+  if (S.tripType==='AIRPORT'&&S.flightTime) hr = parseInt(S.flightTime.split(':')[0]);
+  S.isNightTrip = (hr>=22||(hr>=0&&hr<6));
 
-  // Detect hill station from text if autocomplete didn't fire
-  if (!S.isHillStation) S.isHillStation = HILL_STATIONS.some(h => S.drop.toLowerCase().includes(h));
-  // Detect state from text if autocomplete didn't fire
+  // Hill + state detection from text
+  if (!S.isHillStation) S.isHillStation = HILL_STATIONS.some(h=>S.drop.toLowerCase().includes(h));
   if (!S.detectedState) {
     const dl = S.drop.toLowerCase();
     for (const [st,kw] of Object.entries(STATE_KEYWORDS)) { if (kw.some(k=>dl.includes(k))) { S.detectedState=st; break; } }
-    if (!S.detectedState && dl.match(/tamil|chennai|madurai|trichy|coimbatore|salem|vellore|erode|thanjavur|tirunelveli|thoothukudi|dindigul|kanchipuram|chengalpattu|mahabalipuram|mahabs/)) S.detectedState='tamilnadu';
   }
 
-  // Calculate distances
+  // Distance
   const btn = document.getElementById('step1Btn');
-  btn.textContent = 'Calculating distance...'; btn.disabled = true;
+  btn.textContent='Calculating distance...'; btn.disabled=true;
   let distances;
-  try { distances = await calcDistances(); } catch(e) { distances = {total:0, farthest:0}; }
-  btn.textContent = 'Find Vehicles →'; btn.disabled = false;
+  try { distances = await calcDistances(); } catch(e) { distances={total:0,farthest:0}; }
+  btn.textContent='Find Vehicles →'; btn.disabled=false;
 
   S.dist = distances.total;
   S.farthestFromGarage = distances.farthest;
 
-  // ═══ 65 KM RULE — uses farthest point from garage ═══
-  if (S.tripType === 'LOCAL') {
-    if (S.farthestFromGarage > 65) {
-      S.tripType = 'OUTSTATION';
-      alert('Your farthest destination is ' + S.farthestFromGarage + ' KM from our garage — this is an Outstation trip. Trip type has been updated.');
-      selTripType('OUTSTATION');
-      document.getElementById('outstationDaysCard').style.display = 'block';
-      document.getElementById('dropTypeCard').style.display = 'block';
-    }
+  // 65 KM rule
+  if (S.tripType==='LOCAL' && S.farthestFromGarage>65) {
+    S.tripType='OUTSTATION';
+    alert('Farthest destination is '+S.farthestFromGarage+' KM from garage — switched to Outstation.');
+    selTripType('OUTSTATION');
+    document.getElementById('outstationDaysCard').style.display='block';
+    document.getElementById('dropTypeCard').style.display='block';
   }
 
-  // ═══ MAHABALIPURAM OVERNIGHT RULE ═══
-  // If farthest < 65 KM but days > 1 → treat as outstation
-  if ((S.tripType === 'LOCAL' || S.tripType === 'OUTSTATION') && S.days > 1 && S.farthestFromGarage <= 65 && S.farthestFromGarage > 0) {
-    S.tripType = 'OUTSTATION';
-    document.getElementById('overnightNotice').style.display = 'block';
-  } else {
-    document.getElementById('overnightNotice').style.display = 'none';
-  }
+  // Overnight rule
+  if ((S.tripType==='LOCAL'||S.tripType==='OUTSTATION')&&S.days>1&&S.farthestFromGarage<=65&&S.farthestFromGarage>0) {
+    S.tripType='OUTSTATION';
+    document.getElementById('overnightNotice').style.display='block';
+  } else { document.getElementById('overnightNotice').style.display='none'; }
+
+  // Advance notice for pan-India
+  document.getElementById('panindiaAdvanceNotice').style.display = S.city.advanceNotice?'block':'none';
 
   buildVehicleList();
   goTo(2);
 }
 
-// ═══════════════════ VEHICLE RECOMMENDATION ═══════════════════
-function luggageFits(v, pax, l, m, c) {
-  const pk = Math.min(pax, Math.max(...Object.keys(v.luggage).map(Number)));
-  const cap = v.luggage[pk];
-  if (!cap) return false;
-  return l <= cap.large && m <= cap.medium && c <= cap.cabin;
+// ═══════════════════ VEHICLES ═══════════════════
+function luggageFits(v,pax,l,m,c) {
+  const pk=Math.min(pax,Math.max(...Object.keys(v.luggage).map(Number)));
+  const cap=v.luggage[pk]; if(!cap) return false;
+  return l<=cap.large&&m<=cap.medium&&c<=cap.cabin;
 }
 
 function buildVehicleList() {
-  const pax = S.pax;
-  let suitable = [];
-
+  const pax=S.pax;
+  let suitable=[];
   VEHICLES.forEach(v => {
-    if (S.tripType === 'BRIDAL' && !v.bridal) return; // Skip vehicles without bridal tariff
-    if (pax < v.paxRange[0] || pax > v.paxRange[1]) return;
-    suitable.push({ vehicle:v, luggageFits: luggageFits(v, pax, S.largeBags, S.medBags, S.cabinBags) });
+    const t = T(v);
+    if (S.tripType==='BRIDAL'&&!t.bridal) return;
+    if (pax<v.paxRange[0]||pax>v.paxRange[1]) return;
+    suitable.push({vehicle:v, luggageFits:luggageFits(v,pax,S.largeBags,S.medBags,S.cabinBags)});
   });
 
-  // Sort: fits first, then cheapest
   suitable.sort((a,b) => {
-    if (a.luggageFits && !b.luggageFits) return -1;
-    if (!a.luggageFits && b.luggageFits) return 1;
-    const fa = a.vehicle.local[0]?.fare || a.vehicle.out.perKm*250;
-    const fb = b.vehicle.local[0]?.fare || b.vehicle.out.perKm*250;
-    return fa - fb;
+    if (a.luggageFits&&!b.luggageFits) return -1;
+    if (!a.luggageFits&&b.luggageFits) return 1;
+    const ta=T(a.vehicle), tb=T(b.vehicle);
+    const fa=ta.local[0]?.fare||ta.out.perKm*250;
+    const fb=tb.local[0]?.fare||tb.out.perKm*250;
+    return fa-fb;
   });
 
-  // Limit to top N, but keep a "Show more" option
-  const showAll = suitable.length;
-  const limited = suitable.slice(0, MAX_VEHICLES_SHOWN);
+  const showAll=suitable.length, limited=suitable.slice(0,MAX_VEHICLES_SHOWN);
 
-  // Distance info
-  if (S.dist > 0) {
-    const di = document.getElementById('distanceInfo');
-    di.style.display = 'block';
-    di.innerHTML = `📏 <strong>Garage-to-garage distance: ${S.dist} KM</strong> · Farthest point: ${S.farthestFromGarage} KM from garage` +
-      (S.tripType==='OUTSTATION' && S.dropType==='DROP_ONLY' ? ' (return KM included)' : '') +
-      `<br>📍 Garage: Ashok Nagar, Chennai`;
+  if (S.dist>0) {
+    const di=document.getElementById('distanceInfo'); di.style.display='block';
+    di.innerHTML = `📏 <strong>Garage-to-garage: ${S.dist} KM</strong> · Farthest: ${S.farthestFromGarage} KM` +
+      (S.tripType==='OUTSTATION'&&S.dropType==='DROP_ONLY'?' (return KM included)':'') +
+      `<br>📍 Garage: ${S.city.garage.area}, ${S.city.name}`;
   }
 
-  // USP for airport pickup and drop
-  document.getElementById('uspMsgPickup').style.display = (S.tripType==='AIRPORT' && S.airportSub==='PICKUP') ? 'block' : 'none';
-  document.getElementById('uspMsgDrop').style.display = (S.tripType==='AIRPORT' && S.airportSub==='DROP') ? 'block' : 'none';
+  document.getElementById('uspMsgPickup').style.display = (S.tripType==='AIRPORT'&&S.airportSub==='PICKUP')?'block':'none';
+  document.getElementById('uspMsgDrop').style.display = (S.tripType==='AIRPORT'&&S.airportSub==='DROP')?'block':'none';
 
-  document.getElementById('vehicleSubtext').textContent =
-    `Top ${limited.length} of ${showAll} vehicles for ${pax} pax, ${S.largeBags}L + ${S.medBags}M + ${S.cabinBags}C bags`;
+  document.getElementById('vehicleSubtext').textContent = `Top ${limited.length} of ${showAll} vehicles for ${pax} pax, ${S.largeBags}L+${S.medBags}M+${S.cabinBags}C bags`;
 
-  const grid = document.getElementById('vehicleGrid');
+  const grid=document.getElementById('vehicleGrid');
   grid.innerHTML = limited.map((s,i) => {
-    const v = s.vehicle;
-    const pk = Math.min(pax, Math.max(...Object.keys(v.luggage).map(Number)));
-    const cap = v.luggage[pk] || {large:0,medium:0,cabin:0};
-    const isBest = i===0 && s.luggageFits;
-    return `
-    <div class="vehicle-card ${isBest?'best-match':''}" onclick="selectVehicle('${v.id}')" id="vc-${v.id}">
-      ${isBest ? '<div class="vehicle-best-badge">⭐ BEST MATCH FOR YOUR TRIP</div>' : ''}
+    const v=s.vehicle, pk=Math.min(pax,Math.max(...Object.keys(v.luggage).map(Number)));
+    const cap=v.luggage[pk]||{large:0,medium:0,cabin:0};
+    const isBest=i===0&&s.luggageFits;
+    return `<div class="vehicle-card ${isBest?'best-match':''}" onclick="selectVehicle('${v.id}')" id="vc-${v.id}">
+      ${isBest?'<div class="vehicle-best-badge">⭐ BEST MATCH FOR YOUR TRIP</div>':''}
       <div class="vehicle-images">
-        ${v.imgExterior ? `<img src="${v.imgExterior}" alt="${v.name}" onerror="this.parentElement.innerHTML='<div class=vehicle-img-placeholder>🚗</div><div class=vehicle-img-placeholder>💺</div>'"/>` : '<div class="vehicle-img-placeholder">🚗</div>'}
-        ${v.imgInterior ? `<img src="${v.imgInterior}" alt="${v.name} Interior" onerror="this.style.display='none'"/>` : '<div class="vehicle-img-placeholder">💺</div>'}
+        ${v.imgExterior?`<img src="${v.imgExterior}" alt="${v.name}" onerror="this.parentElement.innerHTML='<div class=vehicle-img-placeholder>🚗</div><div class=vehicle-img-placeholder>💺</div>'"/>`:'<div class="vehicle-img-placeholder">🚗</div>'}
+        ${v.imgInterior?`<img src="${v.imgInterior}" alt="Interior" onerror="this.style.display=\\'none\\'">`:'<div class="vehicle-img-placeholder">💺</div>'}
       </div>
       <div class="vehicle-info">
         <div class="vehicle-name">${v.name}</div>
         <div class="vehicle-config">${v.config} Seater · ${v.category}</div>
-        <div class="vehicle-tags">
-          <span class="vehicle-tag">👥 ${v.config}</span>
-          <span class="vehicle-tag">${s.luggageFits ? '✅' : '⚠️'} ${S.largeBags}L/${S.medBags}M/${S.cabinBags}C</span>
-          <span class="vehicle-tag">⛽ Fuel incl.</span>
-          <span class="vehicle-tag">🧑‍✈️ Chauffeur</span>
-        </div>
-        <div class="vehicle-luggage">Capacity at ${pax} pax: ${cap.large}L + ${cap.medium}M + ${cap.cabin}C${!s.luggageFits ? ' — ⚠️ Luggage exceeds' : ''}</div>
-      </div>
-    </div>`;
+        <div class="vehicle-tags"><span class="vehicle-tag">👥 ${v.config}</span><span class="vehicle-tag">${s.luggageFits?'✅':'⚠️'} ${S.largeBags}L/${S.medBags}M/${S.cabinBags}C</span><span class="vehicle-tag">⛽ Fuel incl.</span></div>
+        <div class="vehicle-luggage">Capacity at ${pax} pax: ${cap.large}L+${cap.medium}M+${cap.cabin}C${!s.luggageFits?' — ⚠️ Exceeds':''}</div>
+      </div></div>`;
   }).join('');
 
-  if (showAll > MAX_VEHICLES_SHOWN) {
-    grid.innerHTML += `<button class="btn btn-outline btn-sm" style="margin:4px 0;" onclick="showAllVehicles()">Show ${showAll - MAX_VEHICLES_SHOWN} more vehicles</button>`;
+  if (showAll>MAX_VEHICLES_SHOWN) {
+    grid.innerHTML += `<button class="btn btn-outline btn-sm" style="margin:4px 0;" onclick="showAllVehicles()">Show ${showAll-MAX_VEHICLES_SHOWN} more</button>`;
     window._allVehicles = suitable;
   }
-
-  if (suitable.length === 0) grid.innerHTML = '<div style="padding:20px;text-align:center;color:var(--ink-light);">No vehicles found. Please adjust passengers or luggage.</div>';
+  if (suitable.length===0) grid.innerHTML='<div style="padding:20px;text-align:center;color:var(--ink-light);">No vehicles found. Adjust passengers or luggage.</div>';
 }
 
 function showAllVehicles() {
-  MAX_VEHICLES_SHOWN_TEMP = 999;
-  const grid = document.getElementById('vehicleGrid');
-  const pax = S.pax;
-  grid.innerHTML = (window._allVehicles || []).map((s,i) => {
-    const v = s.vehicle;
-    const pk = Math.min(pax, Math.max(...Object.keys(v.luggage).map(Number)));
-    const cap = v.luggage[pk] || {large:0,medium:0,cabin:0};
-    const isBest = i===0 && s.luggageFits;
-    return `<div class="vehicle-card ${isBest?'best-match':''}" onclick="selectVehicle('${v.id}')" id="vc-${v.id}">
-      ${isBest ? '<div class="vehicle-best-badge">⭐ BEST MATCH</div>' : ''}
-      <div class="vehicle-images">
-        ${v.imgExterior ? `<img src="${v.imgExterior}" alt="${v.name}" onerror="this.parentElement.innerHTML='<div class=vehicle-img-placeholder>🚗</div><div class=vehicle-img-placeholder>💺</div>'"/>` : '<div class="vehicle-img-placeholder">🚗</div>'}
-        ${v.imgInterior ? `<img src="${v.imgInterior}" alt="${v.name} Interior" onerror="this.style.display='none'"/>` : '<div class="vehicle-img-placeholder">💺</div>'}
-      </div>
-      <div class="vehicle-info">
-        <div class="vehicle-name">${v.name}</div><div class="vehicle-config">${v.config} Seater · ${v.category}</div>
-        <div class="vehicle-tags"><span class="vehicle-tag">👥 ${v.config}</span><span class="vehicle-tag">${s.luggageFits?'✅':'⚠️'} ${S.largeBags}L/${S.medBags}M/${S.cabinBags}C</span></div>
-        <div class="vehicle-luggage">Capacity at ${pax} pax: ${cap.large}L+${cap.medium}M+${cap.cabin}C${!s.luggageFits?' — ⚠️ Exceeds':''}</div>
-      </div></div>`;
+  const grid=document.getElementById('vehicleGrid'), pax=S.pax;
+  grid.innerHTML = (window._allVehicles||[]).map((s,i) => {
+    const v=s.vehicle, pk=Math.min(pax,Math.max(...Object.keys(v.luggage).map(Number)));
+    const cap=v.luggage[pk]||{large:0,medium:0,cabin:0};
+    return `<div class="vehicle-card ${i===0&&s.luggageFits?'best-match':''}" onclick="selectVehicle('${v.id}')" id="vc-${v.id}">
+      ${i===0&&s.luggageFits?'<div class="vehicle-best-badge">⭐ BEST MATCH</div>':''}
+      <div class="vehicle-info"><div class="vehicle-name">${v.name}</div><div class="vehicle-config">${v.config} · ${v.category}</div>
+      <div class="vehicle-luggage">At ${pax} pax: ${cap.large}L+${cap.medium}M+${cap.cabin}C${!s.luggageFits?' — ⚠️':''}</div></div></div>`;
   }).join('');
 }
 
 function selectVehicle(vid) {
-  S.vehicle = VEHICLES.find(x => x.id===vid);
-  document.querySelectorAll('.vehicle-card').forEach(c => c.classList.remove('selected'));
+  S.vehicle=VEHICLES.find(x=>x.id===vid);
+  document.querySelectorAll('.vehicle-card').forEach(c=>c.classList.remove('selected'));
   document.getElementById('vc-'+vid)?.classList.add('selected');
   showPackages(S.vehicle);
 }
 
 // ═══════════════════ PACKAGES ═══════════════════
 function showPackages(v) {
-  const list = document.getElementById('pkgList');
-  document.getElementById('pkgVehicleTitle').textContent = v.name + ' (' + v.config + ')';
-  document.getElementById('pkgContinueBtn').style.display = 'none';
-  document.getElementById('pkgLimitMsg').style.display = 'none';
-  const isOut = S.tripType === 'OUTSTATION';
-  const isBridal = S.tripType === 'BRIDAL';
+  const list=document.getElementById('pkgList');
+  const t = T(v);
+  document.getElementById('pkgVehicleTitle').textContent=v.name+' ('+v.config+') — '+S.city.name;
+  document.getElementById('pkgContinueBtn').style.display='none';
+  document.getElementById('pkgLimitMsg').style.display='none';
 
-  // Midnight warning for evening local bookings
-  const hr = S.time ? parseInt(S.time.split(':')[0]) : -1;
-  document.getElementById('midnightWarn').style.display = (S.tripType === 'LOCAL' && hr >= 20) ? 'block' : 'none';
-  // Bridal terms
-  document.getElementById('bridalTerms').style.display = isBridal ? 'block' : 'none';
+  const isOut=S.tripType==='OUTSTATION', isBridal=S.tripType==='BRIDAL';
+  const hr=S.time?parseInt(S.time.split(':')[0]):-1;
+  document.getElementById('midnightWarn').style.display = (S.tripType==='LOCAL'&&hr>=20)?'block':'none';
+  document.getElementById('bridalTerms').style.display = isBridal?'block':'none';
 
-  if (isBridal && v.bridal) {
-    list.innerHTML = `
-      <div class="pkg-tile selected" onclick="selectBridalPkg()">
-        <div><div class="pkg-name">Bridal — 8 Hours / 80 KM</div>
-        <div class="pkg-detail">Extra: ₹${v.bridal.extrakm}/km · ₹${v.bridal.extrahr}/hr | Includes washing charges</div>
-        ${S.decoration ? '<div style="color:var(--gold);font-size:11px;margin-top:4px;">💐 Flower decoration: ₹2,500+</div>' : ''}</div>
-        <div class="pkg-price">₹${v.bridal.fare.toLocaleString('en-IN')}</div>
-      </div>`;
-    setTimeout(() => { selectBridalPkg(); }, 100);
+  if (isBridal && t.bridal) {
+    list.innerHTML = `<div class="pkg-tile selected" onclick="selectBridalPkg()">
+      <div><div class="pkg-name">Bridal — 8 Hours / 80 KM</div>
+      <div class="pkg-detail">Extra: ₹${t.bridal.extrakm}/km · ₹${t.bridal.extrahr}/hr | Washing included</div>
+      ${S.decoration?'<div style="color:var(--gold);font-size:11px;margin-top:4px;">💐 Decoration: ₹2,500+</div>':''}</div>
+      <div class="pkg-price">₹${t.bridal.fare.toLocaleString('en-IN')}</div></div>`;
+    setTimeout(()=>{selectBridalPkg();},100);
   } else if (isOut) {
-    const o = v.out;
+    const o=t.out;
     list.innerHTML = `<div class="pkg-tile selected" onclick="selectOutPkg()">
       <div><div class="pkg-name">Outstation — Per KM Billing</div>
-      <div class="pkg-detail">₹${o.perKm}/km · Min ${o.minKm} KM/day · Driver Bata ₹${o.batta}/day</div></div>
+      <div class="pkg-detail">₹${o.perKm}/km · Min ${o.minKm} KM/day · Bata ₹${o.batta}/day</div></div>
       <div class="pkg-price">₹${o.perKm}<span style="font-size:10px">/km</span></div></div>`;
-    setTimeout(() => selectOutPkg(), 100);
+    setTimeout(()=>{selectOutPkg();},100);
   } else {
-    list.innerHTML = v.local.filter(p => p.fare > 0).map(pkg => {
-      const extraKm = Math.max(0, S.dist - pkg.km);
-      const fit = S.dist > 0 ? (extraKm===0
+    list.innerHTML = t.local.filter(p=>p.fare>0).map(pkg => {
+      const extraKm=Math.max(0,S.dist-pkg.km);
+      const fit = S.dist>0 ? (extraKm===0
         ? `<span style="color:#1A9E5C;font-size:11px;">✅ ${S.dist} KM fits within ${pkg.km} KM</span>`
         : `<span style="color:#D4A020;font-size:11px;">⚠️ Exceeds by ${extraKm} KM (+₹${(extraKm*pkg.extrakm).toLocaleString('en-IN')})</span>`) : '';
-      return `<div class="pkg-tile" id="pt-${pkg.id}" onclick="selectLocalPkg('${v.id}','${pkg.id}')">
-        <div><div class="pkg-name">${pkg.label}</div>
-        <div class="pkg-detail">Extra: ₹${pkg.extrakm}/km · ₹${pkg.extrahr}/hr</div>
-        ${fit ? '<div style="margin-top:4px;">'+fit+'</div>' : ''}</div>
+      return `<div class="pkg-tile" id="pt-${pkg.id}" onclick="selectLocalPkg('${S.vehicle.id}','${pkg.id}')">
+        <div><div class="pkg-name">${pkg.label}</div><div class="pkg-detail">Extra: ₹${pkg.extrakm}/km · ₹${pkg.extrahr}/hr</div>
+        ${fit?'<div style="margin-top:4px;">'+fit+'</div>':''}</div>
         <div class="pkg-price">₹${pkg.fare.toLocaleString('en-IN')}</div></div>`;
     }).join('');
   }
   goTo(3);
 }
 
-function selectLocalPkg(vid, pkgId) {
-  const v = VEHICLES.find(x=>x.id===vid);
-  S.pkg = { ...v.local.find(p=>p.id===pkgId), type:'local' };
+function selectLocalPkg(vid,pkgId) {
+  const t=T(VEHICLES.find(x=>x.id===vid));
+  S.pkg={...t.local.find(p=>p.id===pkgId), type:'local'};
   document.querySelectorAll('.pkg-tile').forEach(t=>t.classList.remove('selected'));
   document.getElementById('pt-'+pkgId)?.classList.add('selected');
-  showPkgFeedback();
-  document.getElementById('pkgContinueBtn').style.display = 'block';
+  showPkgFeedback(); document.getElementById('pkgContinueBtn').style.display='block';
 }
-
 function selectOutPkg() {
-  S.pkg = { ...S.vehicle.out, id:'out', label:'Outstation Per KM', type:'outstation' };
+  const t=T(S.vehicle);
+  S.pkg={...t.out, id:'out', label:'Outstation Per KM', type:'outstation'};
   document.querySelectorAll('.pkg-tile').forEach(t=>t.classList.add('selected'));
-  showPkgFeedback();
-  document.getElementById('pkgContinueBtn').style.display = 'block';
+  showPkgFeedback(); document.getElementById('pkgContinueBtn').style.display='block';
 }
-
 function selectBridalPkg() {
-  S.pkg = { ...S.vehicle.bridal, id:'bridal', label:'Bridal 8 Hours / 80 KM', km:80, type:'bridal' };
+  const t=T(S.vehicle);
+  S.pkg={...t.bridal, id:'bridal', label:'Bridal 8hr/80KM', km:80, type:'bridal'};
   document.querySelectorAll('.pkg-tile').forEach(t=>t.classList.add('selected'));
-  showPkgFeedback();
-  document.getElementById('pkgContinueBtn').style.display = 'block';
+  showPkgFeedback(); document.getElementById('pkgContinueBtn').style.display='block';
 }
 
 function showPkgFeedback() {
-  const el = document.getElementById('pkgLimitMsg');
-  if (S.dist <= 0) { el.style.display='none'; return; }
-
-  if (S.pkg.type === 'outstation') {
-    const minB = S.pkg.minKm * S.days;
-    if (S.dist >= minB) {
-      el.style.display='block'; el.style.background='#E8F7EF'; el.style.border='1px solid #A8D8BC';
-      el.innerHTML = `✅ <strong>Actual distance applies.</strong> ${S.dist} KM exceeds minimum ${minB} KM (${S.pkg.minKm}/day × ${S.days} day${S.days>1?'s':''}).`;
-    } else {
-      el.style.display='block'; el.style.background='#FFF8E8'; el.style.border='1px solid #F0D060';
-      el.innerHTML = `⚠️ <strong>Minimum billing applies.</strong> Trip is ${S.dist} KM but minimum is ${minB} KM. Billed for ${minB} KM.`;
-    }
-  } else if (S.pkg.type === 'local' || S.pkg.type === 'bridal') {
-    const pkgKm = S.pkg.km || 80;
-    const extra = Math.max(0, S.dist - pkgKm);
-    if (extra === 0) {
-      el.style.display='block'; el.style.background='#E8F7EF'; el.style.border='1px solid #A8D8BC';
-      el.innerHTML = `✅ <strong>Within package.</strong> ${S.dist} KM fits within ${pkgKm} KM. No extra charges.`;
-    } else {
-      el.style.display='block'; el.style.background='#FFF8E8'; el.style.border='1px solid #F0D060';
-      el.innerHTML = `⚠️ <strong>Exceeds by ${extra} KM.</strong> Extra: ${extra} × ₹${S.pkg.extrakm} = ₹${(extra*S.pkg.extrakm).toLocaleString('en-IN')}`;
-    }
+  const el=document.getElementById('pkgLimitMsg');
+  if (S.dist<=0) { el.style.display='none'; return; }
+  if (S.pkg.type==='outstation') {
+    const minB=S.pkg.minKm*S.days;
+    if (S.dist>=minB) { el.style.display='block'; el.style.background='#E8F7EF'; el.style.border='1px solid #A8D8BC'; el.innerHTML=`✅ <strong>Actual distance applies.</strong> ${S.dist} KM exceeds min ${minB} KM.`; }
+    else { el.style.display='block'; el.style.background='#FFF8E8'; el.style.border='1px solid #F0D060'; el.innerHTML=`⚠️ <strong>Min billing:</strong> ${minB} KM (${S.pkg.minKm}/day × ${S.days}). Billed for ${minB} KM.`; }
+  } else {
+    const pkgKm=S.pkg.km||80, extra=Math.max(0,S.dist-pkgKm);
+    if (extra===0) { el.style.display='block'; el.style.background='#E8F7EF'; el.style.border='1px solid #A8D8BC'; el.innerHTML=`✅ <strong>Within package.</strong> ${S.dist} KM fits in ${pkgKm} KM.`; }
+    else { el.style.display='block'; el.style.background='#FFF8E8'; el.style.border='1px solid #F0D060'; el.innerHTML=`⚠️ <strong>Exceeds by ${extra} KM.</strong> Extra: ₹${(extra*S.pkg.extrakm).toLocaleString('en-IN')}`; }
   }
 }
 
-// ═══════════════════ FARE CALCULATION ═══════════════════
+// ═══════════════════ FARE ═══════════════════
 function buildQuote() {
-  if (!S.vehicle || !S.pkg) { alert('Please select a vehicle and package first.'); return; }
-  const v = S.vehicle, pkg = S.pkg, dist = S.dist;
-  let rows = [], subtotal = 0;
+  const v=S.vehicle, pkg=S.pkg, dist=S.dist, t=T(v);
+  let rows=[], subtotal=0;
 
-  if (pkg.type === 'outstation') {
-    const billable = Math.max(dist, pkg.minKm * S.days);
-    const kmCost = billable * pkg.perKm;
-    const bataCost = (pkg.batta||0) * S.days;
-    const nights = Math.max(0, S.days - 1);
-    const nhCost = nights * (pkg.nightHalt||0);
-    subtotal = kmCost + bataCost + nhCost;
+  if (pkg.type==='outstation') {
+    const billable=Math.max(dist,pkg.minKm*S.days);
+    const kmCost=billable*pkg.perKm, bataCost=(pkg.batta||0)*S.days;
+    const nights=Math.max(0,S.days-1), nhCost=nights*(pkg.nightHalt||0);
+    subtotal=kmCost+bataCost+nhCost;
+    rows.push({label:`Distance (${billable} KM × ₹${pkg.perKm}/km)`,value:kmCost});
+    if (billable>dist) rows.push({label:`ℹ️ Min billing: ${pkg.minKm}/day × ${S.days} days`,value:''});
+    rows.push({label:`Driver Bata (${S.days}d × ₹${pkg.batta})`,value:bataCost});
+    if (nights>0) rows.push({label:`Night Halt (${nights}n × ₹${pkg.nightHalt})`,value:nhCost});
 
-    rows.push({ label:`Distance (${billable} KM × ₹${pkg.perKm}/km)`, value:kmCost });
-    if (billable > dist) rows.push({ label:`ℹ️ Min billing: ${pkg.minKm} KM/day × ${S.days} day${S.days>1?'s':''}`, value:'', note:true });
-    rows.push({ label:`Driver Bata (${S.days} day${S.days>1?'s':''} × ₹${pkg.batta})`, value:bataCost });
-    if (nights > 0) rows.push({ label:`Night Halt (${nights} night${nights>1?'s':''} × ₹${pkg.nightHalt})`, value:nhCost });
-
-    // Interstate permit
-    if (S.detectedState && S.detectedState!=='tamilnadu' && v.permits[S.detectedState]) {
-      const permit = v.permits[S.detectedState];
-      const sn = S.detectedState.charAt(0).toUpperCase()+S.detectedState.slice(1);
-      rows.push({ label:`Interstate Permit (${sn})`, value:permit });
-      subtotal += permit;
+    // Permits — city-specific
+    if (typeof t.permits === 'object' && S.detectedState && S.detectedState !== S.city.state.toLowerCase().replace(/\s/g,'') && t.permits[S.detectedState]) {
+      const permit=t.permits[S.detectedState];
+      const sn=S.detectedState.charAt(0).toUpperCase()+S.detectedState.slice(1);
+      rows.push({label:`Interstate Permit (${sn})`,value:permit}); subtotal+=permit;
       document.getElementById('permitNotice').style.display='block';
-      document.getElementById('permitNotice').innerHTML = `🚧 <strong>Interstate Permit:</strong> ${sn} permit ₹${permit.toLocaleString('en-IN')} for ${v.name} included.`;
+      document.getElementById('permitNotice').innerHTML=`🚧 <strong>Interstate Permit:</strong> ${sn} — ₹${permit.toLocaleString('en-IN')} for ${v.name}.`;
+    } else if (t.permits==='actuals' && S.detectedState && S.detectedState!==S.city.state.toLowerCase().replace(/\s/g,'')) {
+      rows.push({label:'Interstate Permit',value:'At actuals'});
+      document.getElementById('permitNotice').style.display='block';
+      document.getElementById('permitNotice').innerHTML=`🚧 <strong>Interstate Permit:</strong> Applicable at actuals. Exact amount confirmed by our team.`;
     } else {
       document.getElementById('permitNotice').style.display='none';
     }
-
-  } else if (pkg.type === 'bridal') {
-    const extraKm = Math.max(0, dist - 80);
-    const extraKmCost = extraKm * pkg.extrakm;
-    subtotal = pkg.fare + extraKmCost;
-    rows.push({ label:'Bridal Package (8 Hours / 80 KM)', value:pkg.fare });
-    rows.push({ label:`Extra KM (${extraKm} km × ₹${pkg.extrakm})`, value:extraKmCost });
-    if (S.decoration) { rows.push({ label:'Flower Decoration (basic)', value:2500 }); subtotal += 2500; }
-    rows.push({ label:'Driver Bata', value:0 });
+  } else if (pkg.type==='bridal') {
+    const extraKm=Math.max(0,dist-80), extraKmCost=extraKm*pkg.extrakm;
+    subtotal=pkg.fare+extraKmCost;
+    rows.push({label:'Bridal Package (8hr/80KM)',value:pkg.fare});
+    rows.push({label:`Extra KM (${extraKm} × ₹${pkg.extrakm})`,value:extraKmCost});
+    if (S.decoration) { rows.push({label:'Flower Decoration',value:2500}); subtotal+=2500; }
+    rows.push({label:'Driver Bata',value:0});
     document.getElementById('permitNotice').style.display='none';
-
   } else {
-    // LOCAL
-    const extraKm = Math.max(0, dist - pkg.km);
-    const extraCost = Math.round(extraKm * pkg.extrakm);
-    subtotal = pkg.fare + extraCost;
-    rows.push({ label:pkg.label, value:pkg.fare });
-    rows.push({ label:`Extra KM (${extraKm} km × ₹${pkg.extrakm})`, value:extraCost });
-    rows.push({ label:'Driver Bata (Local)', value:0 });
+    const extraKm=Math.max(0,dist-pkg.km), extraCost=Math.round(extraKm*pkg.extrakm);
+    subtotal=pkg.fare+extraCost;
+    rows.push({label:pkg.label,value:pkg.fare});
+    rows.push({label:`Extra KM (${extraKm} × ₹${pkg.extrakm})`,value:extraCost});
+    rows.push({label:'Driver Bata (Local)',value:0});
     document.getElementById('permitNotice').style.display='none';
   }
 
-  // Night allowance — vehicle-specific from Excel
-  if (S.isNightTrip && (pkg.type === 'local' || pkg.type === 'bridal')) {
-    const na = v.nightAllowance || 300;
-    rows.push({ label:'Night Allowance (after 10 PM)', value:na });
-    subtotal += na;
+  // Night allowance — local/bridal only
+  if (S.isNightTrip && (pkg.type==='local'||pkg.type==='bridal')) {
+    const na=v.nightAllowance||300;
+    rows.push({label:'Night Allowance (10PM-6AM)',value:na}); subtotal+=na;
   }
 
-  const gst = Math.round(subtotal * 0.18);
-  const total = subtotal + gst;
-  S.fare = total;
-  rows.push({ label:'GST 18%', value:gst });
+  const gst=Math.round(subtotal*0.18), total=subtotal+gst;
+  S.fare=total;
+  rows.push({label:'GST 18%',value:gst});
 
-  // Notices
-  document.getElementById('hillWarning').style.display = S.isHillStation ? 'block' : 'none';
-  document.getElementById('onewayNotice').style.display = (pkg.type==='outstation' && S.dropType==='DROP_ONLY') ? 'block' : 'none';
+  document.getElementById('hillWarning').style.display=S.isHillStation?'block':'none';
+  document.getElementById('onewayNotice').style.display=(pkg.type==='outstation'&&S.dropType==='DROP_ONLY')?'block':'none';
 
-  // Render
-  document.getElementById('qVehicle').textContent = `${v.name} (${v.config})`;
-  const tripLabel = S.tripType + (S.tripType==='AIRPORT' ? ' '+S.airportSub : '') + (S.days>1 ? ` · ${S.days} days` : '');
-  document.getElementById('qTripType').textContent = tripLabel;
+  document.getElementById('qVehicle').textContent=`${v.name} (${v.config})`;
+  const tripLabel=S.tripType+(S.tripType==='AIRPORT'?' '+S.airportSub:'')+(S.days>1?` · ${S.days}d`:'');
+  document.getElementById('qTripType').textContent=tripLabel+' · '+S.city.name;
 
-  document.getElementById('quoteRows').innerHTML = rows.map(r => `
-    <div class="quote-row"><span class="qr-label">${r.label}</span>
-    <span class="qr-value ${r.value===0?'zero':''}">${typeof r.value==='number' ? '₹'+r.value.toLocaleString('en-IN') : (r.value||'')}</span></div>`).join('');
-  document.getElementById('qTotal').textContent = '₹' + total.toLocaleString('en-IN');
+  document.getElementById('quoteRows').innerHTML=rows.map(r=>`<div class="quote-row"><span class="qr-label">${r.label}</span><span class="qr-value ${r.value===0?'zero':''}">${typeof r.value==='number'?'₹'+r.value.toLocaleString('en-IN'):(r.value||'')}</span></div>`).join('');
+  document.getElementById('qTotal').textContent='₹'+total.toLocaleString('en-IN');
+
+  // Dynamic terms based on city
+  const terms = document.getElementById('quoteTerms');
+  terms.innerHTML = `🔹 Rental includes vehicle hire with fuel and driver.<br>
+    🔹 Toll, parking and interstate permits additional.<br>
+    🔹 Vehicle availability subject to confirmation.<br>
+    🔹 Garage: ${S.city.garage.area}, ${S.city.name}. Distance calculated garage-to-garage.` +
+    (S.city.advanceNotice ? '<br>🔹 Bookings require 2 days advance notice. Confirmation within 4 hours.' : '') +
+    (S.city.id==='chennai'&&S.tripType==='LOCAL' ? '<br>🔹 After midnight 11:59 PM, package resets for Chennai local.' : '');
 
   goTo(4);
 }
 
 // ═══════════════════ SUMMARY ═══════════════════
 function buildSummary() {
-  const v=S.vehicle, pkg=S.pkg;
-  let s = `🚖 APJ CABS — BOOKING SUMMARY\n━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-  s += `👤 Name: ${S.name||'—'}\n📱 Phone: ${S.phone||'—'}\n`;
-  s += `📅 Date: ${S.date}${S.time?' @ '+S.time:''}\n`;
-  s += `🏙️ Trip: ${S.tripType}${S.tripType==='AIRPORT'?' ('+S.airportSub+')':''}${S.days>1?' · '+S.days+' days':''}\n`;
-  if (S.tripType==='OUTSTATION') s += `🚦 Mode: ${S.dropType.replace('_',' ')}\n`;
-  s += `📍 Pickup: ${S.pickup}\n📍 Drop: ${S.drop}\n`;
-  if (S.flightNo) s += `✈️ Flight: ${S.flightNo}\n`;
-  s += `👥 Pax: ${S.pax} · 🧳 ${S.largeBags}L+${S.medBags}M+${S.cabinBags}C\n`;
-  s += `🚗 Vehicle: ${v?v.name+' ('+v.config+')':'—'}\n`;
-  s += `📦 Package: ${pkg?(pkg.label||pkg.type):'—'}\n`;
-  s += `📏 Distance: ${S.dist} KM (G2G) · Farthest: ${S.farthestFromGarage} KM\n`;
-  if (S.decoration) s += `💐 Flower Decoration: Yes\n`;
-  s += `💰 Fare: ₹${S.fare.toLocaleString('en-IN')} (incl. GST)\n`;
-  if (S.detectedState && S.detectedState!=='tamilnadu' && v.permits[S.detectedState]) s += `🚧 Permit: ${S.detectedState} ₹${v.permits[S.detectedState].toLocaleString('en-IN')}\n`;
-  if (S.isHillStation) s += `🏔️ Hill Station: Yes\n`;
-  s += `━━━━━━━━━━━━━━━━━━━━━━━━\n📍 Garage: Ashok Nagar, Chennai\nToll, parking additional. Estimate subject to change.`;
+  const v=S.vehicle, t=T(v);
+  let s=`🚖 APJ CABS — BOOKING SUMMARY\n━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+  s+=`🏙️ City: ${S.city.name}\n👤 Name: ${S.name||'—'}\n📱 Phone: ${S.phone||'—'}\n`;
+  s+=`📅 Date: ${S.date}${S.time?' @ '+S.time:''}\n`;
+  s+=`🚦 Trip: ${S.tripType}${S.tripType==='AIRPORT'?' ('+S.airportSub+')':''}${S.days>1?' · '+S.days+'d':''}\n`;
+  if (S.tripType==='OUTSTATION') s+=`🔄 Mode: ${S.dropType.replace('_',' ')}\n`;
+  s+=`📍 Pickup: ${S.pickup}\n📍 Drop: ${S.drop}\n`;
+  if (S.flightNo) s+=`✈️ Flight: ${S.flightNo}\n`;
+  s+=`👥 Pax: ${S.pax} · 🧳 ${S.largeBags}L+${S.medBags}M+${S.cabinBags}C\n`;
+  s+=`🚗 Vehicle: ${v?v.name+' ('+v.config+')':'—'}\n`;
+  s+=`📏 Distance: ${S.dist} KM (G2G) · Farthest: ${S.farthestFromGarage} KM\n`;
+  if (S.decoration) s+=`💐 Decoration: Yes\n`;
+  s+=`💰 Fare: ₹${S.fare.toLocaleString('en-IN')} (incl. GST)\n`;
+  s+=`━━━━━━━━━━━━━━━━━━━━━━━━\n📍 Garage: ${S.city.garage.area}, ${S.city.name}\nToll, parking additional. Estimate subject to change.`;
   return s;
 }
 
-// ═══════════════════ AGENT HANDOFF ═══════════════════
+// ═══════════════════ AGENT ═══════════════════
 function returnToChat() { window.history.back(); }
 
 async function talkToAgent() {
-  const btn = document.getElementById('agentBtn');
+  const btn=document.getElementById('agentBtn');
   btn.disabled=true; btn.textContent='Sending...';
   document.getElementById('statusErr').style.display='none';
-
   if (!S.convId) { try { const r=await fetch(BACKEND+'/get-conv-id'); const d=await r.json(); if(d.found) S.convId=d.conversation_id; } catch(e){} }
-
-  const summary = buildSummary();
-  let sent = false;
+  const summary=buildSummary(); let sent=false;
   if (S.convId) {
-    try {
-      const res = await fetch(BACKEND+'/send-summary', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({conversation_id:S.convId, summary}) });
-      const data = await res.json();
-      if (res.ok && data.success) sent = true;
-    } catch(e) {}
+    try { const res=await fetch(BACKEND+'/send-summary',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({conversation_id:S.convId,summary})}); const data=await res.json(); if(res.ok&&data.success) sent=true; } catch(e){}
   }
-
-  if (sent) {
-    document.getElementById('quoteActions').style.display='none';
-    document.getElementById('statusOk').style.display='block';
-    setTimeout(()=>returnToChat(), 1500);
-  } else {
-    document.getElementById('statusErr').textContent='⚠️ Could not send summary. Please share details with agent in chat.';
-    document.getElementById('statusErr').style.display='block';
-    btn.disabled=false; btn.textContent='🧑‍💼 Talk to Agent & Confirm Booking';
-  }
+  if (sent) { document.getElementById('quoteActions').style.display='none'; document.getElementById('statusOk').style.display='block'; setTimeout(()=>returnToChat(),1500); }
+  else { document.getElementById('statusErr').textContent='⚠️ Could not send summary. Share details with agent in chat.'; document.getElementById('statusErr').style.display='block'; btn.disabled=false; btn.textContent='🧑‍💼 Talk to Agent & Confirm Booking'; }
 }
 </script>
 </body>
